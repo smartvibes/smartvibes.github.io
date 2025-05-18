@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartVibes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f2f2f2;
+      color: #000;
+    }
+    header {
+      padding: 20px;
+      text-align: center;
+    }
+    header img {
+      max-width: 250px;
+    }
+    nav {
+      background: #f5f5f5;
+      padding: 10px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: #000;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 600;
+    }
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 100px 20px;
+      background: url('hero-bg.jpg') center/cover no-repeat;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 30px;
+    }
+    .hero a {
+      background: #000;
+      color: #fff;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 600;
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .service-card {
+      background: #f5f5f5;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+    }
+    .service-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .service-card h3 {
+      margin: 20px;
+      font-size: 1.2rem;
+    }
+    .service-card p {
+      padding: 0 20px 20px;
+    }
+    .contact-details {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 1rem;
+      line-height: 1.8em;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #f4f4f4;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="Vertical Black.png" alt="SmartVibes Logo">
+  </header>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section class="hero">
+    <h1>Empowering Smart Spaces</h1>
+    <p>We provide cutting-edge solutions to automate and optimize modern buildings for comfort, security, and efficiency.</p>
+    <a href="#services">Explore Our Services</a>
+  </section>
+
+  <section id="services">
+    <h2 style="text-align:center">Our Services</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <img src="automation.jpg" alt="Automation & Monitoring">
+        <h3>Automation & Monitoring</h3>
+        <p>Comprehensive automation solutions that let you monitor and control your building's systems remotely and intelligently.</p>
+      </div>
+      <div class="service-card">
+        <img src="lighting.jpg" alt="Lighting & Shading">
+        <h3>Lighting & Shading</h3>
+        <p>Seamless control of lighting and shading systems to enhance ambiance, energy efficiency, and user comfort.</p>
+      </div>
+      <div class="service-card">
+        <img src="hvac.jpg" alt="HVAC Control">
+        <h3>HVAC Control</h3>
+        <p>Smart HVAC management ensures optimal temperature, air quality, and energy use throughout your spaces.</p>
+      </div>
+      <div class="service-card">
+        <img src="security.jpg" alt="Security & Access">
+        <h3>Security & Access</h3>
+        <p>Advanced security systems integrated with access control to protect and monitor your premises 24/7.</p>
+      </div>
+      <div class="service-card">
+        <img src="networks.jpg" alt="Networks">
+        <h3>Networks</h3>
+        <p>Robust and secure networking infrastructure to connect all your smart systems reliably and efficiently.</p>
+      </div>
+      <div class="service-card">
+        <img src="audiovideo.jpg" alt="Audio & Video">
+        <h3>Audio & Video</h3>
+        <p>Immersive audio and video setups for superior entertainment and communication experiences in any environment.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 style="text-align:center">Contact Us</h2>
+    <div class="contact-details">
+      <p><strong>Company:</strong> SMARTVIBES LIMITED</p>
+      <p><strong>Email:</strong> info@smartvibes.com</p>
+      <p><strong>Phone:</strong> +123 456 7890</p>
+      <p><strong>Address:</strong> 123 Innovation Street, Tech City</p>
+    </div>
+  </section>
+
+  <footer>
+    <div style="display: flex; justify-content: center; align-items: center; gap: 15px; opacity: 0.3;">
+      <img src="knx-logo.png" alt="KNX Logo" style="height: 40px;">
+      <img src="modbus-logo.png" alt="Modbus Logo" style="height: 40px;">
+      <img src="zwave-logo.png" alt="Z-Wave Logo" style="height: 40px;">
+      <img src="casambi-logo.png" alt="Casambi Logo" style="height: 40px;">
+      <img src="dali-logo.png" alt="DALI Logo" style="height: 40px;">
+    </div>
+    <p style="margin-top: 10px;">&copy; SMARTVIBES LIMITED. All rights reserved.</p>
+  </footer>
+</body>
+</html>
