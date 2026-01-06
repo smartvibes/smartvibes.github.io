@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SmartVibes</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -35,14 +36,40 @@
       font-weight: 600;
     }
     .hero {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 100px 20px;
-      background: url('hero-bg.jpg') center/cover no-repeat;
-    }
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 120px 20px;
+  background: url('hero-bg.jpg') center/cover no-repeat;
+  color: #fff;
+}
+
+/* dark overlay */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+
+/* keep text above overlay */
+.hero h1,
+.hero p,
+.hero a {
+  position: relative;
+  z-index: 2;
+}
+.hero h1 {
+  color: #ffffff;
+}
+
+.hero p {
+  color: #eaeaea;
+}
     .hero h1 {
       font-size: 2.5rem;
       margin-bottom: 20px;
@@ -159,12 +186,21 @@
   </section>
 
   <section id="contact">
-    <h2 style="text-align:center">Contact Us</h2>
-    <div class="contact-details">
-      <p><strong>Company:</strong> SMARTVIBES LIMITED</p>
-      <p><strong>Email:</strong> cs@smartvibes.tech</p>
+  <h2 style="text-align:center">Contact Us</h2>
+  <div class="contact-details">
+    <p><strong>Company:</strong> SMARTVIBES LIMITED</p>
+    <p><strong>Email:</strong> cs@smartvibes.tech</p>
+
+    <div style="margin-top: 20px;">
+      <a href="https://www.instagram.com/smartvibes_technologies/" target="_blank" style="margin: 0 15px; color: #000; font-size: 1.5rem;">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61580852265808" target="_blank" style="margin: 0 15px; color: #000; font-size: 1.5rem;">
+        <i class="fab fa-facebook"></i>
+      </a>
     </div>
-  </section>
+  </div>
+</section>
 
   <footer>
     <div style="display: flex; justify-content: center; align-items: center; gap: 15px; opacity: 0.3;">
@@ -173,7 +209,7 @@
       <img src="knx-logo.png" alt="KNX Logo" style="height: 40px;">
       <img src="dali-logo.png" alt="DALI Logo" style="height: 40px;">
     </div>
-    <p style="margin-top: 10px;">&copy; SMARTVIBES LIMITED. All rights reserved.</p>
+    <p style="margin-top: 10px;">&copy; 2026 SMARTVIBES LIMITED. All rights reserved.</p>
   </footer>
 </body>
 </html>
