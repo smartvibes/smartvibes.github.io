@@ -1,222 +1,1217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SmartVibes</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f2f2f2;
-      color: #000;
-    }
-    header {
-      padding: 20px;
-      text-align: center;
-    }
-    header img {
-      max-width: 250px;
-    }
-    nav {
-      background: #f5f5f5;
-      padding: 10px 0;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    nav a {
-      color: #000;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: 600;
-    }
-    .hero {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 120px 20px;
-  background: url('hero-bg.jpg') center/cover no-repeat;
-  color: #fff;
-}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartVibes — Comfort. Energy. Aesthetics.</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* dark overlay */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  z-index: 1;
-}
+  :root {
+    --teal: #73DDE4;
+    --teal-dim: #3ab8c2;
+    --black: #000000;
+    --white: #ffffff;
+    --off: #F5F5F5;
+    --mid: #888888;
+    --dark: #111111;
+    --light-teal: #C1EBEE;
+  }
 
-/* keep text above overlay */
-.hero h1,
-.hero p,
-.hero a {
-  position: relative;
-  z-index: 2;
-}
-.hero h1 {
-  color: #ffffff;
-}
+  html { scroll-behavior: smooth; }
 
-.hero p {
-  color: #eaeaea;
-}
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  a, button { cursor: none; }
+
+  /* Custom cursor */
+  .cursor {
+    width: 10px; height: 10px; background: #73DDE4;
+    border-radius: 50%; position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9999; transition: transform 0.15s ease;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px; border: 1px solid rgba(115,221,228,0.5);
+    border-radius: 50%; position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9998; transition: all 0.08s ease;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 28px 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: background 0.4s, padding 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(12px);
+    padding: 18px 60px;
+    border-bottom: 1px solid rgba(115,221,228,0.1);
+  }
+  .nav-logo {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 20px; font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--teal); }
+  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-links a {
+    font-size: 13px; font-weight: 400; letter-spacing: 0.08em;
+    text-transform: uppercase; color: rgba(255,255,255,0.6);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta {
+    font-size: 13px; font-weight: 500; letter-spacing: 0.06em;
+    padding: 10px 24px; border: 1px solid var(--teal);
+    color: var(--teal); text-decoration: none;
+    transition: all 0.2s;
+    text-transform: uppercase;
+  }
+  .nav-cta:hover { background: var(--teal); color: var(--black); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 0 60px 80px;
+    position: relative; overflow: hidden;
+    background: var(--black);
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 40%, rgba(115,221,228,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 30% 40% at 20% 80%, rgba(115,221,228,0.04) 0%, transparent 60%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(115,221,228,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(115,221,228,0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+  }
+  .hero-eyebrow {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--teal);
+    margin-bottom: 24px; opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(48px, 7vw, 96px);
+    font-weight: 700; line-height: 0.92;
+    letter-spacing: -0.02em;
+    max-width: 900px;
+    opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
+  }
+  .hero-title .accent { color: var(--teal); }
+  .hero-title .outline {
+    -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+    color: transparent;
+  }
+  .hero-sub {
+    margin-top: 32px;
+    font-size: 16px; font-weight: 300; line-height: 1.7;
+    color: rgba(255,255,255,0.5); max-width: 480px;
+    opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
+  }
+  .hero-actions {
+    margin-top: 48px; display: flex; gap: 20px; align-items: center;
+    opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
+  }
+  .btn-primary {
+    padding: 14px 36px; background: var(--teal);
+    color: var(--black); font-weight: 500; font-size: 14px;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    text-decoration: none; transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #fff; }
+  .btn-ghost {
+    font-size: 14px; color: rgba(255,255,255,0.5);
+    text-decoration: none; letter-spacing: 0.06em;
+    display: flex; align-items: center; gap: 8px;
+    transition: color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--teal); }
+  .btn-ghost::after { content: '→'; }
+
+  .hero-scroll {
+    position: absolute; right: 60px; bottom: 80px;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    opacity: 0; animation: fadeIn 1s 1.2s forwards;
+  }
+  .hero-scroll span {
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,255,255,0.3); writing-mode: vertical-rl;
+  }
+  .scroll-line {
+    width: 1px; height: 60px;
+    background: linear-gradient(to bottom, var(--teal), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* LOGOS */
+  .logos {
+    padding: 40px 60px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex; align-items: center; gap: 60px;
+  }
+  .logos-label {
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,255,255,0.2); white-space: nowrap; flex-shrink: 0;
+  }
+  .logos-track {
+    display: flex; gap: 60px; align-items: center;
+    opacity: 0.35; filter: brightness(10);
+  }
+  .logos-track span {
+    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;
+    font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* PILLARS */
+  .pillars {
+    padding: 120px 60px;
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px; background: rgba(255,255,255,0.06);
+  }
+  .pillar {
+    padding: 60px 48px;
+    background: var(--black);
+    position: relative; overflow: hidden;
+    transition: background 0.3s;
+  }
+  .pillar::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: var(--teal); transform: scaleX(0);
+    transform-origin: left; transition: transform 0.4s ease;
+  }
+  .pillar:hover { background: #0a0a0a; }
+  .pillar:hover::before { transform: scaleX(1); }
+  .pillar-num {
+    font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px;
+    font-weight: 600; letter-spacing: 0.2em;
+    color: var(--teal); margin-bottom: 32px;
+  }
+  .pillar-title {
+    font-family: 'Plus Jakarta Sans', sans-serif; font-size: 28px;
+    font-weight: 700; line-height: 1.1; margin-bottom: 20px;
+  }
+  .pillar-text {
+    font-size: 14px; line-height: 1.8;
+    color: rgba(255,255,255,0.4); font-weight: 300;
+  }
+  .pillar-arrow {
+    position: absolute; bottom: 40px; right: 48px;
+    font-size: 20px; color: rgba(255,255,255,0.15);
+    transition: color 0.2s, transform 0.2s;
+  }
+  .pillar:hover .pillar-arrow { color: var(--teal); transform: translate(4px, -4px); }
+
+  /* SERVICES */
+  .services { padding: 0 60px 120px; }
+  .section-label {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 24px;
+  }
+  .section-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(36px, 4vw, 56px); font-weight: 700;
+    line-height: 1.05; letter-spacing: -0.02em;
+    margin-bottom: 80px; max-width: 600px;
+  }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: rgba(255,255,255,0.06);
+  }
+  .service-card {
+    background: var(--black); padding: 48px 40px;
+    position: relative; overflow: hidden;
+    transition: background 0.3s;
+    cursor: default;
+  }
+  .service-card:hover { background: #080808; }
+  .service-icon {
+    width: 44px; height: 44px; margin-bottom: 28px;
+    color: var(--teal);
+  }
+  .service-icon svg { width: 100%; height: 100%; }
+  .service-name {
+    font-family: 'Plus Jakarta Sans', sans-serif; font-size: 19px;
+    font-weight: 700; margin-bottom: 14px;
+  }
+  .service-desc {
+    font-size: 13px; line-height: 1.8;
+    color: rgba(255,255,255,0.35); font-weight: 300;
+  }
+  .service-line {
+    position: absolute; bottom: 0; left: 40px; right: 40px;
+    height: 1px; background: var(--teal);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .service-card:hover .service-line { transform: scaleX(1); }
+
+  /* PROJECT TYPE BADGES */
+  .project-type-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 20px; border: 1px solid rgba(115,221,228,0.2);
+    font-size: 13px; color: rgba(255,255,255,0.5); font-weight: 400;
+    transition: all 0.2s;
+  }
+  .project-type-badge:hover { border-color: var(--teal); color: var(--teal); }
+  .project-type-badge svg { color: var(--teal); }
+
+  /* HOW WE WORK */
+  .howwework {
+    padding: 120px 60px;
+    background: #030303;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .hww-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0; margin-top: 60px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .hww-card {
+    padding: 48px 36px; position: relative;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.3s;
+  }
+  .hww-card:last-child { border-right: none; }
+  .hww-card:hover { background: #080808; }
+  .hww-card::after {
+    content: ''; position: absolute;
+    bottom: 0; left: 36px; right: 36px; height: 1px;
+    background: var(--teal); transform: scaleX(0);
+    transform-origin: left; transition: transform 0.4s ease;
+  }
+  .hww-card:hover::after { transform: scaleX(1); }
+  .hww-icon {
+    width: 52px; height: 52px; margin-bottom: 32px;
+    color: var(--teal);
+    border: 1px solid rgba(115,221,228,0.25);
+    display: flex; align-items: center; justify-content: center;
+    transition: border-color 0.2s;
+  }
+  .hww-icon svg { width: 24px; height: 24px; }
+  .hww-card:hover .hww-icon { border-color: var(--teal); }
+  .hww-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 17px; font-weight: 700;
+    color: var(--white); margin-bottom: 16px; line-height: 1.3;
+  }
+  .hww-desc {
+    font-size: 13px; line-height: 1.8;
+    color: rgba(255,255,255,0.35); font-weight: 300;
+  }
+
+  /* SHOWCASE */
+  .showcase {
+    padding: 80px 0 0;
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .showcase-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: rgba(255,255,255,0.06);
+    margin-top: 0;
+  }
+  .showcase-item {
+    background: var(--black);
+    display: flex; flex-direction: column;
+  }
+  .showcase-video-wrap {
+    position: relative; width: 100%;
+    padding-bottom: 56.25%; background: #080808;
+    overflow: hidden;
+  }
+  .showcase-video-wrap iframe {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; border: none;
+    z-index: 2;
+  }
+  .showcase-placeholder {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    z-index: 1; pointer-events: none;
+  }
+  .showcase-play {
+    width: 64px; height: 64px; border-radius: 50%;
+    border: 1px solid rgba(115,221,228,0.4);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--teal);
+  }
+  .showcase-info {
+    padding: 36px 48px 48px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .showcase-partner {
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 10px;
+  }
+  .showcase-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--white); margin-bottom: 12px;
+    letter-spacing: -0.01em; line-height: 1.2;
+  }
+  .showcase-desc {
+    font-size: 13px; line-height: 1.8;
+    color: rgba(255,255,255,0.35); font-weight: 300;
+  }
+
+  /* STATEMENT */
+  .statement {
+    padding: 160px 60px;
+    background: var(--teal);
+    position: relative; overflow: hidden;
+  }
+  .statement-bg {
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      45deg, transparent, transparent 40px,
+      rgba(0,0,0,0.03) 40px, rgba(0,0,0,0.03) 41px
+    );
+  }
+  .statement-inner { position: relative; z-index: 1; }
+  .statement-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(36px, 5vw, 72px); font-weight: 700;
+    line-height: 0.95; letter-spacing: -0.02em;
+    color: var(--black); max-width: 800px; margin-bottom: 48px;
+  }
+  .statement-sub {
+    font-size: 16px; font-weight: 300; line-height: 1.7;
+    color: rgba(0,0,0,0.55); max-width: 480px; margin-bottom: 48px;
+  }
+  .btn-dark {
+    display: inline-block; padding: 14px 36px;
+    background: var(--black); color: var(--white);
+    font-size: 13px; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .btn-dark:hover { background: #222; }
+
+  /* NUMBERS */
+  .numbers {
+    padding: 120px 60px;
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 1px; background: rgba(255,255,255,0.06);
+  }
+  .number-card {
+    padding: 60px 40px; background: var(--black);
+  }
+  .number-val {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(48px, 5vw, 72px); font-weight: 700;
+    color: var(--teal); line-height: 1; margin-bottom: 12px;
+  }
+  .number-label {
+    font-size: 13px; color: rgba(255,255,255,0.4);
+    font-weight: 300; line-height: 1.5;
+  }
+
+  /* WHY */
+  .why {
+    padding: 120px 60px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 100px; align-items: start;
+  }
+  .why-left { position: sticky; top: 120px; }
+  .why-items { display: flex; flex-direction: column; gap: 0; }
+  .why-item {
+    padding: 36px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex; gap: 28px; align-items: flex-start;
+  }
+  .why-num {
+    font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px;
+    font-weight: 600; color: var(--teal);
+    letter-spacing: 0.1em; min-width: 30px; padding-top: 3px;
+  }
+  .why-content {}
+  .why-item-title {
+    font-family: 'Plus Jakarta Sans', sans-serif; font-size: 17px;
+    font-weight: 700; margin-bottom: 10px;
+  }
+  .why-item-text {
+    font-size: 13px; line-height: 1.8;
+    color: rgba(255,255,255,0.4); font-weight: 300;
+  }
+
+  /* PARTNERS */
+  .partners {
+    padding: 120px 60px;
+    background: #030303;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .partners-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 24px; margin-top: 60px;
+  }
+  .partner-card {
+    position: relative; border-radius: 0;
+    overflow: hidden; background: #0a0a0a;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: border-color 0.3s;
+  }
+  .partner-card:hover { border-color: rgba(115,221,228,0.3); }
+  .partner-video-wrap {
+    position: relative; width: 100%; padding-bottom: 56.25%;
+    background: #000; overflow: hidden;
+  }
+  .partner-video-wrap iframe {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    border: none;
+  }
+  .partner-video-wrap .video-placeholder {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    background: #0d0d0d;
+    color: rgba(255,255,255,0.15);
+    font-size: 13px; gap: 12px;
+  }
+  .video-placeholder-icon {
+    width: 48px; height: 48px; border-radius: 50%;
+    border: 1px solid rgba(115,221,228,0.3);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--teal); font-size: 18px;
+  }
+  .partner-info {
+    padding: 24px 28px 28px;
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
+  }
+  .partner-name {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 6px;
+  }
+  .partner-role {
+    font-size: 12px; color: var(--teal);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .partner-desc { font-size: 13px; color: rgba(255,255,255,0.35); line-height: 1.7; font-weight: 300; }
+  .partner-link {
+    font-size: 11px; color: rgba(255,255,255,0.2); text-decoration: none;
+    white-space: nowrap; transition: color 0.2s; margin-top: 4px; display: block;
+  }
+  .partner-link:hover { color: var(--teal); }
+
+  /* TEXT PARTNER CARDS */
+  .partners-name-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: rgba(255,255,255,0.06);
+  }
+  .partner-name-card {
+    background: #0a0a0a; padding: 40px 36px;
+    text-decoration: none; display: block;
+    border: none; position: relative; overflow: hidden;
+    transition: background 0.3s;
+  }
+  .partner-name-card::after {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 1px;
+    background: var(--teal); transform: scaleX(0);
+    transform-origin: left; transition: transform 0.4s ease;
+  }
+  .partner-name-card:hover { background: #111; }
+  .partner-name-card:hover::after { transform: scaleX(1); }
+  .pnc-role {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 10px;
+  }
+  .pnc-name {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 24px; font-weight: 700; color: var(--white);
+    margin-bottom: 14px; letter-spacing: -0.01em;
+    transition: color 0.2s;
+  }
+  .partner-name-card:hover .pnc-name { color: var(--teal); }
+  .pnc-desc {
+    font-size: 13px; line-height: 1.75;
+    color: rgba(255,255,255,0.35); font-weight: 300; margin-bottom: 16px;
+  }
+  .pnc-link {
+    font-size: 11px; color: rgba(255,255,255,0.2);
+    transition: color 0.2s;
+  }
+  .partner-name-card:hover .pnc-link { color: var(--teal); }
+
+  .partners-strip {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 40px;
+  }
+  .strip-logos {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: rgba(255,255,255,0.06);
+  }
+  .strip-logo-item {
+    background: #0a0a0a; padding: 32px 36px;
+    text-decoration: none; transition: background 0.2s;
+    border: none;
+  }
+  .strip-logo-item:hover { background: #111; }
+  .strip-logo-name {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 22px; font-weight: 700; color: rgba(255,255,255,0.5);
+    margin-bottom: 8px; transition: color 0.2s;
+    letter-spacing: -0.01em;
+  }
+  .strip-logo-item:hover .strip-logo-name { color: var(--teal); }
+  .strip-logo-sub {
+    font-size: 12px; color: rgba(255,255,255,0.2);
+    line-height: 1.5; font-weight: 300;
+  }
+
+  /* CONTACT */
+  .contact {
+    padding: 120px 60px;
+    background: #050505;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .contact-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+    align-items: start;
+  }
+  .whatsapp-cta {
+    display: flex; flex-direction: column; gap: 0;
+  }
+  .whatsapp-btn {
+    display: flex; align-items: center; gap: 16px;
+    padding: 22px 32px; background: #25D366;
+    color: #000; text-decoration: none;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px; font-weight: 700;
+    transition: all 0.2s; margin-top: 32px;
+    letter-spacing: 0.01em;
+  }
+  .whatsapp-btn:hover { background: #20bd5a; }
+  .whatsapp-icon { width: 26px; height: 26px; flex-shrink: 0; }
+  .whatsapp-sub { margin-top: 16px; font-size: 13px; color: rgba(255,255,255,0.3); line-height: 1.6; }
+
+  .social-links { display: flex; flex-direction: column; gap: 16px; margin-top: 48px; }
+  .social-link {
+    display: flex; align-items: center; gap: 16px;
+    padding: 18px 24px; border: 1px solid rgba(255,255,255,0.08);
+    text-decoration: none; transition: all 0.2s;
+    color: rgba(255,255,255,0.6);
+  }
+  .social-link:hover { border-color: var(--teal); color: var(--teal); }
+  .social-link-icon { width: 20px; height: 20px; flex-shrink: 0; }
+  .social-link-name { font-size: 14px; font-weight: 500; }
+  .social-link-handle { font-size: 12px; color: rgba(255,255,255,0.3); margin-left: auto; }
+  .social-link:hover .social-link-handle { color: var(--teal); }
+
+  .contact-info { padding-top: 8px; }
+  .contact-detail { margin-bottom: 36px; }
+  .contact-detail-label {
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 8px;
+  }
+  .contact-detail-val {
+    font-size: 15px; color: rgba(255,255,255,0.7); font-weight: 300;
+  }
+  .contact-detail-val a {
+    color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s;
+  }
+  .contact-detail-val a:hover { color: var(--teal); }
+
+  /* FOOTER */
+  footer {
+    padding: 40px 60px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-logo {
+    font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px;
+    font-weight: 700; color: var(--white);
+  }
+  .footer-logo span { color: var(--teal); }
+  .footer-copy {
+    font-size: 12px; color: rgba(255,255,255,0.2);
+  }
+  .footer-links { display: flex; gap: 28px; }
+  .footer-links a {
+    font-size: 12px; color: rgba(255,255,255,0.3);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--teal); }
+  .footer-social-icon { display: flex; align-items: center; opacity: 0.7; transition: opacity 0.2s, transform 0.2s; }
+  .footer-social-icon:hover { opacity: 1; transform: scale(1.1); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; } to { opacity: 1; }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; } 50% { opacity: 1; }
+  }
+
+  .reveal {
+    opacity: 1; transform: translateY(0);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.hidden { opacity: 0; transform: translateY(40px); }
+  .reveal.hidden.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+
+
+  /* ── MOBILE IMPROVEMENTS ── */
+  @media (max-width: 900px) {
+    nav, .hero, .logos, .services, .howwework, .statement,
+    .showcase, .numbers, .why, .contact, footer {
+      padding-left: 20px; padding-right: 20px;
     }
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin-bottom: 30px;
-    }
-    .hero a {
-      background: #000;
-      color: #fff;
-      padding: 12px 24px;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: 600;
-    }
-    section {
-      padding: 60px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-    .service-card {
-      background: #f5f5f5;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease;
-    }
-    .service-card:hover {
-      transform: translateY(-5px);
-    }
-    .service-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-    .service-card h3 {
-      margin: 20px;
-      font-size: 1.2rem;
-    }
-    .service-card p {
-      padding: 0 20px 20px;
-    }
-    .contact-details {
-      text-align: center;
-      margin-top: 40px;
-      font-size: 1rem;
-      line-height: 1.8em;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #f4f4f4;
-      font-size: 0.9rem;
-    }
-  </style>
+    nav { padding: 16px 20px; }
+    nav.scrolled { padding: 12px 20px; }
+    .nav-links { display: none; }
+    .nav-cta { font-size: 12px; padding: 8px 16px; }
+
+    /* hero */
+    .hero { padding: 120px 20px 60px; }
+    .hero-scroll { display: none; }
+
+    /* grids → single column */
+    .pillars, .services-grid, .hww-grid,
+    .partners-name-grid, .showcase-grid,
+    .contact-inner, .why { grid-template-columns: 1fr; gap: 1px; }
+    .numbers { grid-template-columns: 1fr 1fr; }
+    .why { gap: 40px; }
+    .why-left { position: static; }
+
+    /* sections padding */
+    .services, .howwework, .partners, .why,
+    .contact, .numbers { padding-top: 60px; padding-bottom: 60px; }
+
+    /* project type badges wrap */
+    .project-types { gap: 10px; }
+    .project-type-badge { font-size: 12px; padding: 8px 14px; }
+
+    /* pillar border fix */
+    .pillar { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+
+    /* showcase video height */
+    .showcase-info { padding: 24px 20px 32px; }
+    .showcase-title { font-size: 18px; }
+
+    /* contact */
+    .whatsapp-btn { font-size: 14px; padding: 18px 24px; }
+
+    /* footer */
+    footer { flex-direction: column; gap: 16px; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
+
+    /* section titles */
+    .section-title { font-size: clamp(28px, 6vw, 40px); }
+    .statement-title { font-size: clamp(28px, 6vw, 56px); }
+  }
+
+  @media (max-width: 480px) {
+    .numbers { grid-template-columns: 1fr; }
+    .hero-actions { flex-direction: column; gap: 16px; }
+    .logos { overflow-x: auto; }
+    .logos-track { gap: 32px; }
+  }
+
+</style>
 </head>
 <body>
-  <header>
-    <img src="Vertical Black.png" alt="SmartVibes Logo">
-  </header>
-  <nav>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
-  </nav>
 
-  <section class="hero">
-    <h1>Empowering Smart Spaces</h1>
-    <p>We provide cutting-edge solutions to automate and optimize modern buildings for comfort, security, and efficiency.</p>
-    <a href="#services">Explore Our Services</a>
-  </section>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-  <section id="services">
-    <h2 style="text-align:center">Our Services</h2>
-    <div class="services-grid">
-      <div class="service-card">
-        <img src="automation.jpg" alt="Automation & Monitoring">
-        <h3>Automation & Monitoring</h3>
-        <p>Comprehensive automation solutions that let you monitor and control your building's systems remotely and intelligently.</p>
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo"><img src="data:image/png;base64,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" alt="SmartVibes" style="height:32px;width:auto;display:block;"></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#howwework">How we work</a></li>
+    <li><a href="smartvibes_partners.html">Partners</a></li>
+    <li><a href="#why">Why us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in touch</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <p class="hero-eyebrow">Smart Building Integrator — Cyprus</p>
+  <h1 class="hero-title">
+    Buildings<br>
+    that <span class="accent">think</span><br>
+    <span class="outline">for themselves.</span>
+  </h1>
+  <p class="hero-sub">We design and integrate complete smart building ecosystems — bringing automation, energy, security, and AV together as one.</p>
+  <div class="hero-actions">
+    <a href="#contact" class="btn-primary">Start a project</a>
+    <a href="#services" class="btn-ghost">Explore services</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<div class="logos">
+  <span class="logos-label">Certified in</span>
+  <div class="logos-track">
+    <span>KNX</span>
+    <span>DALI</span>
+    <span>Modbus</span>
+    <span>Z-Wave</span>
+    <span>BACnet</span>
+    <span>Loxone</span>
+  </div>
+</div>
+
+<!-- PILLARS -->
+<!-- PILLARS -->
+<section class="pillars">
+  <div class="pillar reveal">
+    <div class="pillar-num">01</div>
+    <h3 class="pillar-title">Comfort</h3>
+    <p class="pillar-text">Spaces that adapt to the people inside them — automatically, silently, effortlessly.</p>
+    <span class="pillar-arrow">↗</span>
+  </div>
+  <div class="pillar reveal reveal-delay-1">
+    <div class="pillar-num">02</div>
+    <h3 class="pillar-title">Energy</h3>
+    <p class="pillar-text">Intelligent systems that reduce waste, lower costs, and optimise performance 24/7.</p>
+    <span class="pillar-arrow">↗</span>
+  </div>
+  <div class="pillar reveal reveal-delay-2">
+    <div class="pillar-num">03</div>
+    <h3 class="pillar-title">Aesthetics</h3>
+    <p class="pillar-text">Technology that disappears into your design — intuitive, refined, and invisible.</p>
+    <span class="pillar-arrow">↗</span>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <p class="section-label reveal">What we do</p>
+  <h2 class="section-title reveal">Every system. One ecosystem.</h2>
+  <div class="services-grid">
+
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/>
+        </svg>
       </div>
-      <div class="service-card">
-        <img src="lighting.jpg" alt="Lighting & Shading">
-        <h3>Lighting & Shading</h3>
-        <p>Seamless control of lighting and shading systems to enhance ambiance, energy efficiency, and user comfort.</p>
+      <h3 class="service-name">Building Automation & BMS</h3>
+      <p class="service-desc">Centralised control of every building system — lighting, HVAC, security, and AV — from a single intelligent platform.</p>
+      <div class="service-line"></div>
+    </div>
+
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+        </svg>
       </div>
-      <div class="service-card">
-        <img src="hvac.jpg" alt="HVAC Control">
-        <h3>HVAC Control</h3>
-        <p>Smart HVAC management ensures optimal temperature, air quality, and energy use throughout your spaces.</p>
+      <h3 class="service-name">Smart Lighting</h3>
+      <p class="service-desc">Adaptive lighting that responds to occupancy, daylight, and mood — automatically, on any schedule.</p>
+      <div class="service-line"></div>
+    </div>
+
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 10 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/>
+        </svg>
       </div>
-      <div class="service-card">
-        <img src="security.jpg" alt="Security & Access">
-        <h3>Security & Access</h3>
-        <p>Advanced security systems integrated with access control to protect and monitor your premises 24/7.</p>
+      <h3 class="service-name">HVAC Control</h3>
+      <p class="service-desc">Precision climate management that maintains comfort while slashing energy consumption.</p>
+      <div class="service-line"></div>
+    </div>
+
+    <div class="service-card reveal reveal-delay-3">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+        </svg>
       </div>
-      <div class="service-card">
-        <img src="networks.jpg" alt="Networks">
-        <h3>Networks</h3>
-        <p>Robust and secure networking infrastructure to connect all your smart systems reliably and efficiently.</p>
+      <h3 class="service-name">Energy Management</h3>
+      <p class="service-desc">Real-time monitoring, analysis, and optimisation that cuts costs and supports sustainability goals.</p>
+      <div class="service-line"></div>
+    </div>
+
+    <div class="service-card reveal reveal-delay-4">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="11" width="18" height="11" rx="1"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
       </div>
-      <div class="service-card">
-        <img src="audiovideo.jpg" alt="Audio & Video">
-        <h3>Audio & Video</h3>
-        <p>Immersive audio and video setups for superior entertainment and communication experiences in any environment.</p>
+      <h3 class="service-name">Security & Access Control</h3>
+      <p class="service-desc">Complete visibility and control over who enters your building — remotely, in real time, with full logs.</p>
+      <div class="service-line"></div>
+    </div>
+
+    <div class="service-card reveal reveal-delay-5">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+        </svg>
+      </div>
+      <h3 class="service-name">AV & Unified Communication</h3>
+      <p class="service-desc">Seamless audio, video, and communication systems — integrated and controllable from anywhere.</p>
+      <div class="service-line"></div>
+    </div>
+
+  </div>
+
+  <!-- NEW + RETROFIT BADGE -->
+  <div class="project-types reveal" style="margin-top:60px; display:flex; gap:16px; flex-wrap:wrap;">
+    <div class="project-type-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:16px;height:16px;flex-shrink:0;">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+      </svg>
+      New developments
+    </div>
+    <div class="project-type-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:16px;height:16px;flex-shrink:0;">
+        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+      </svg>
+      Retrofits & upgrades
+    </div>
+    <div class="project-type-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:16px;height:16px;flex-shrink:0;">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
+      Residential
+    </div>
+    <div class="project-type-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:16px;height:16px;flex-shrink:0;">
+        <rect x="2" y="7" width="20" height="14" rx="1"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+      </svg>
+      Commercial
+    </div>
+    <div class="project-type-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:16px;height:16px;flex-shrink:0;">
+        <path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
+      </svg>
+      Hospitality
+    </div>
+  </div>
+
+</section>
+
+<!-- HOW WE WORK -->
+<section class="howwework" id="howwework">
+  <p class="section-label reveal">How we work</p>
+  <h2 class="section-title reveal">From concept<br>to commissioning.</h2>
+  <div class="hww-grid">
+
+    <div class="hww-card reveal">
+      <div class="hww-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+          <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+        </svg>
+      </div>
+      <h4 class="hww-title">Design &amp; Consulting</h4>
+      <p class="hww-desc">We listen first. Then we design a tailored smart system around your building's specific needs — new development or retrofit, residential or commercial.</p>
+    </div>
+
+    <div class="hww-card reveal reveal-delay-1">
+      <div class="hww-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+          <path d="M21 10V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l2-1.14"/><path d="M16.5 9.4L7.55 4.24"/><polyline points="3.29 7 12 12 20.71 7"/><line x1="12" y1="22" x2="12" y2="12"/><circle cx="18.5" cy="15.5" r="2.5"/><path d="M20.27 17.27L22 19"/>
+        </svg>
+      </div>
+      <h4 class="hww-title">Supply &amp; Distribution</h4>
+      <p class="hww-desc">We source and supply certified premium components from our trusted partner network — the right hardware for your project, on time.</p>
+    </div>
+
+    <div class="hww-card reveal reveal-delay-2">
+      <div class="hww-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/><circle cx="12" cy="7" r="1" fill="currentColor"/>
+        </svg>
+      </div>
+      <h4 class="hww-title">Installation &amp; Configuration</h4>
+      <p class="hww-desc">Professional installation, precision programming, and full system commissioning — every device configured, tested, and working perfectly before handover.</p>
+    </div>
+
+    <div class="hww-card reveal reveal-delay-3">
+      <div class="hww-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+        </svg>
+      </div>
+      <h4 class="hww-title">Maintenance &amp; Support</h4>
+      <p class="hww-desc">Dedicated aftercare, remote diagnostics, rapid troubleshooting, and proactive system optimisation — we stay with you long after installation.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<section class="statement">
+  <div class="statement-bg"></div>
+  <div class="statement-inner">
+    <h2 class="statement-title">Let's build something smarter.</h2>
+    <p class="statement-sub">Based in Cyprus. Serving the Eastern Mediterranean. Working with developers, architects, and businesses who expect more from their buildings.</p>
+    <a href="#contact" class="btn-dark">Start a conversation</a>
+  </div>
+</section>
+
+<!-- SHOWCASE -->
+<section class="showcase" id="showcase">
+  <p class="section-label reveal" style="padding:0 60px;margin-bottom:24px;">In action</p>
+  <h2 class="section-title reveal" style="padding:0 60px;margin-bottom:48px;">Technology that speaks<br>for itself.</h2>
+  <div class="showcase-grid">
+
+    <!-- SLOT 1 — Ekinex -->
+    <div class="showcase-item reveal">
+      <div class="showcase-video-wrap">
+        <iframe
+          src="https://player.vimeo.com/video/813118637?autoplay=1&muted=1&loop=1&title=0&byline=0&portrait=0&color=73DDE4&background=1"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+          title="Ekinex KNX showcase">
+        </iframe>
+      </div>
+      <div class="showcase-info">
+        <div class="showcase-partner">KNX Keypads &amp; Controls</div>
+        <h3 class="showcase-title">Ekinex — designed to last.</h3>
+        <p class="showcase-desc">Premium KNX wall-mount devices — beautiful, customisable keypads and controls that blend seamlessly into any interior while delivering precise, reliable automation.</p>
       </div>
     </div>
-  </section>
 
-  <section id="contact">
-  <h2 style="text-align:center">Contact Us</h2>
-  <div class="contact-details">
-    <p><strong>Company:</strong> SMARTVIBES LIMITED</p>
-    <p><strong>Email:</strong> cs@smartvibes.tech</p>
-    <p>
-  <a href="https://wa.me/35799295243" target="_blank" style="color: inherit; text-decoration: none;">
-    <i class="fab fa-whatsapp" style="color: #25D366; margin-right: 8px;"></i>
-    Message us on WhatsApp
-  </a>
-</p>
+    <!-- SLOT 2 — Smart Shading -->
+    <div class="showcase-item reveal reveal-delay-2">
+      <div class="showcase-video-wrap">
+        <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <source src="https://d2oo5quzpsdib.cloudfront.net/Website/General/Shading-Home-1.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="showcase-info">
+        <div class="showcase-partner">Smart Shading &amp; Automation</div>
+        <h3 class="showcase-title">Intelligent shading, effortlessly controlled.</h3>
+        <p class="showcase-desc">Automated shading that responds to light, temperature, and time of day — creating the perfect environment while reducing energy consumption automatically.</p>
+      </div>
+    </div>
 
+  </div>
+</section>
 
-    <div style="margin-top: 20px;">
-      <a href="https://www.instagram.com/smartvibes_technologies/" target="_blank" style="margin: 0 15px; color: #000; font-size: 1.5rem;">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="https://www.facebook.com/profile.php?id=61580852265808" target="_blank" style="margin: 0 15px; color: #000; font-size: 1.5rem;">
-        <i class="fab fa-facebook"></i>
-      </a>
+<!-- NUMBERS -->
+<section class="numbers">
+  <div class="number-card reveal">
+    <div class="number-val">80+</div>
+    <div class="number-label">Projects completed</div>
+  </div>
+  <div class="number-card reveal reveal-delay-1">
+    <div class="number-val">6+</div>
+    <div class="number-label">Integrated systems per project</div>
+  </div>
+  <div class="number-card reveal reveal-delay-2">
+    <div class="number-val">1</div>
+    <div class="number-label">Unified platform for everything</div>
+  </div>
+  <div class="number-card reveal reveal-delay-3">
+    <div class="number-val">40%</div>
+    <div class="number-label">Average energy reduction</div>
+  </div>
+  <div class="number-card reveal reveal-delay-4">
+    <div class="number-val">24/7</div>
+    <div class="number-label">System monitoring & support</div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why" id="why">
+  <div class="why-left">
+    <p class="section-label reveal">Why SmartVibes</p>
+    <h2 class="section-title reveal" style="margin-bottom:0;">The difference is in the detail.</h2>
+  </div>
+  <div class="why-items">
+    <div class="why-item reveal">
+      <span class="why-num">01</span>
+      <div class="why-content">
+        <h4 class="why-item-title">End-to-end delivery</h4>
+        <p class="why-item-text">From design consultation and system specification through to installation, commissioning, and ongoing support — we own every stage.</p>
+      </div>
+    </div>
+    <div class="why-item reveal">
+      <span class="why-num">02</span>
+      <div class="why-content">
+        <h4 class="why-item-title">No generic solutions</h4>
+        <p class="why-item-text">Every system is designed around your specific building, your specific needs, and your specific goals. Nothing off the shelf.</p>
+      </div>
+    </div>
+    <div class="why-item reveal">
+      <span class="why-num">03</span>
+      <div class="why-content">
+        <h4 class="why-item-title">International standards, local expertise</h4>
+        <p class="why-item-text">Certified in KNX, DALI, and Modbus. We attend global events like Light + Building Frankfurt to bring the latest technology directly to Cyprus.</p>
+      </div>
+    </div>
+    <div class="why-item reveal">
+      <span class="why-num">04</span>
+      <div class="why-content">
+        <h4 class="why-item-title">One point of contact</h4>
+        <p class="why-item-text">Constantinos Stavrou leads every project personally. You always know who to call — and they always know your building.</p>
+      </div>
     </div>
   </div>
 </section>
 
-  <footer>
-    <div style="display: flex; justify-content: center; align-items: center; gap: 15px; opacity: 0.3;">
-      <img src="modbus-logo.png" alt="Modbus Logo" style="height: 40px;">
-      <img src="zwave-logo.png" alt="Z-Wave Logo" style="height: 40px;">
-      <img src="knx-logo.png" alt="KNX Logo" style="height: 40px;">
-      <img src="dali-logo.png" alt="DALI Logo" style="height: 40px;">
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <p class="section-label reveal">Get in touch</p>
+  <h2 class="section-title reveal">Let's talk about<br>your project.</h2>
+  <div class="contact-inner">
+
+    <div class="whatsapp-cta reveal">
+      <p style="font-size:15px;color:rgba(255,255,255,0.45);line-height:1.7;font-weight:300;max-width:420px;">
+        The fastest way to reach us is directly on WhatsApp. Tell us about your project — whether it's a new development, a retrofit, or a single system upgrade — and we'll get back to you personally.
+      </p>
+      <a href="https://wa.me/35799295243?text=Hi%20Constantinos%2C%20I%27d%20like%20to%20discuss%20a%20smart%20building%20project." class="whatsapp-btn" target="_blank">
+        <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Message us on WhatsApp
+      </a>
+
     </div>
-    <p style="margin-top: 10px;">&copy; 2026 SMARTVIBES LIMITED. All rights reserved.</p>
-  </footer>
+
+    <div class="contact-info reveal reveal-delay-2">
+      <div class="contact-detail">
+        <div class="contact-detail-label">Email</div>
+        <div class="contact-detail-val"><a href="mailto:cs@smartvibes.tech">cs@smartvibes.tech</a></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-label">Phone / WhatsApp</div>
+        <div class="contact-detail-val"><a href="tel:+35799295243">+357 99295243</a></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-label">Contact person</div>
+        <div class="contact-detail-val">Constantinos Stavrou<br><span style="font-size:13px;color:rgba(255,255,255,0.4);">Automation Specialist</span></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-label">Address</div>
+        <div class="contact-detail-val">Falirou 13, Kiti<br>7550 Larnaca, Cyprus</div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-label">Working hours</div>
+        <div class="contact-detail-val">Monday – Friday<br><span style="font-size:13px;color:rgba(255,255,255,0.4);">09:00 – 17:00</span></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-label">Website</div>
+        <div class="contact-detail-val"><a href="https://smartvibes.tech">smartvibes.tech</a></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="justify-content:center; gap:40px;">
+  <div class="footer-copy">© 2026 SmartVibes Limited. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#howwework">How we work</a>
+    <a href="smartvibes_partners.html">Partners</a>
+    <a href="#why">Why us</a>
+    <a href="#contact">Contact</a>
+    <!-- Social icons -->
+    <a href="https://www.instagram.com/smartvibes_technologies/" target="_blank" class="footer-social-icon" title="Instagram">
+      <svg viewBox="0 0 24 24" width="22" height="22">
+        <defs>
+          <linearGradient id="ig-footer" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#f09433"/>
+            <stop offset="50%" stop-color="#dc2743"/>
+            <stop offset="100%" stop-color="#bc1888"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="20" height="20" rx="5" fill="url(#ig-footer)"/>
+        <circle cx="12" cy="12" r="4" fill="none" stroke="white" stroke-width="1.5"/>
+        <circle cx="17.5" cy="6.5" r="1" fill="white"/>
+      </svg>
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=61580852265808" target="_blank" class="footer-social-icon" title="Facebook">
+      <svg viewBox="0 0 24 24" width="22" height="22">
+        <rect width="24" height="24" rx="4" fill="#1877F2"/>
+        <path d="M16 8h-2.5C12.67 8 12 8.67 12 9.5V12h4l-.5 4H12v8H8v-8H6v-4h2V9.5C8 7.01 9.79 5 12.5 5H16v3z" fill="white"/>
+      </svg>
+    </a>
+    <a href="https://www.linkedin.com/company/smartvibes/?viewAsMember=true" target="_blank" class="footer-social-icon" title="LinkedIn">
+      <svg viewBox="0 0 24 24" width="22" height="22">
+        <rect width="24" height="24" rx="4" fill="#0A66C2"/>
+        <path d="M6.5 9h-3v9h3V9zM5 7.5A1.5 1.5 0 1 0 5 4.5 1.5 1.5 0 0 0 5 7.5zM20 13.5c0-2.5-1.5-4.5-4-4.5-1.2 0-2.2.6-2.8 1.5V9h-3v9h3v-4.5c0-1.1.9-2 2-2s2 .9 2 2V18h3v-4.5z" fill="white"/>
+      </svg>
+    </a>
+  </div>
+</footer>
+
+<script>
+  // Cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.transform = `translate(${mx - 5}px, ${my - 5}px)`;
+  });
+  function animateRing() {
+    rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+    ring.style.transform = `translate(${rx - 18}px, ${ry - 18}px)`;
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Reveal on scroll — add hidden first, then animate in
+  const reveals = document.querySelectorAll('.reveal');
+  reveals.forEach(el => el.classList.add('hidden'));
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
