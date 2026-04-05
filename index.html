@@ -1353,7 +1353,7 @@
   <div class="about-right reveal reveal-delay-2">
     <div class="about-body">
       <p>Constantinos began his career as an electrician — building a deep, hands-on understanding of how buildings are wired, powered, and controlled from the ground up. That foundation led him into the world of <strong>building automation</strong>, where he spent years designing and engineering intelligent systems for some of the most demanding projects in Cyprus and abroad.</p>
-      <p>Over the course of his career, he has worked across the full spectrum — from <strong>small residential installations</strong> to large-scale commercial and hospitality developments — gaining rare expertise that spans both the technical and the human sides of smart building delivery. He also served as <strong>Product Owner at one of the leading GRMS manufacturers</strong>, giving him deep insight into how the best hardware is designed, built, and integrated at an industry level.</p>
+      <p>Over the course of his career, he has worked across the full spectrum — from small residential installations to <strong>large-scale commercial</strong> and hospitality developments — gaining rare expertise that spans both the technical and the human sides of smart building delivery. He also served as <strong>Product Owner at one of the leading GRMS manufacturers</strong>, giving him deep insight into how the best hardware is designed, built, and integrated at an industry level.</p>
       <p>What drives him is simple: a genuine passion for technology and a belief that <strong>intelligent buildings should be the standard, not the exception</strong>. Comfortable living, energy efficiency, and beautiful design are not competing priorities — when done right, they reinforce each other.</p>
       <p>In <strong>2025, he founded SmartVibes Limited</strong> with a clear vision: to bring that expertise directly to building owners in Cyprus. To help them create spaces that are greener, more comfortable, and built for the future — using the best technology in the world, installed by people who truly understand it.</p>
     </div>
@@ -1500,4 +1500,14 @@
   const reveals = document.querySelectorAll('.reveal');
   reveals.forEach(el => el.classList.add('hidden'));
   const observer = new IntersectionObserver(entries => {
-    entries.f
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
