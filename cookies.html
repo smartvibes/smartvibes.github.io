@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cookie Policy — SmartVibes</title>
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://smartvibes.tech/cookies.html">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--teal:#73DDE4;--td:rgba(115,221,228,0.1);--tb:rgba(115,221,228,0.22);--bk:#111;--d2:#1a1a1a;--d5:#333;--tx:#fff;--mu:rgba(255,255,255,0.55);--r:8px}
+body{font-family:"DM Sans",sans-serif;background:var(--bk);color:var(--tx);min-height:100vh;font-size:15px;line-height:1.8}
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid rgba(255,255,255,0.06);position:sticky;top:0;z-index:100;background:rgba(17,17,17,0.97);backdrop-filter:blur(12px)}
+nav img{height:24px;width:auto}
+nav a{font-size:13px;color:var(--mu);text-decoration:none;transition:color 0.2s}
+nav a:hover{color:var(--teal)}
+.wrap{max-width:760px;margin:0 auto;padding:64px 32px 100px}
+.page-label{font-size:11px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
+h1{font-family:"Plus Jakarta Sans",sans-serif;font-size:clamp(28px,4vw,44px);font-weight:700;line-height:1.05;letter-spacing:-0.02em;margin-bottom:16px}
+.last-updated{font-size:13px;color:var(--mu);margin-bottom:48px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,0.06)}
+h2{font-family:"Plus Jakarta Sans",sans-serif;font-size:18px;font-weight:700;color:var(--tx);margin:36px 0 12px}
+p{color:var(--mu);margin-bottom:16px;font-weight:300}
+ul,ol{color:var(--mu);padding-left:20px;margin-bottom:16px;font-weight:300}
+li{margin-bottom:8px}
+strong{color:var(--tx);font-weight:500}
+a{color:var(--teal);text-decoration:none}
+a:hover{text-decoration:underline}
+.cookie-table{width:100%;border-collapse:collapse;margin-bottom:20px;font-size:13px}
+.cookie-table th{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--mu);padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.08);text-align:left;background:var(--d2)}
+.cookie-table td{padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.04);color:var(--mu);vertical-align:top}
+.cookie-table tr:last-child td{border-bottom:none}
+.badge{display:inline-block;font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:4px;background:var(--td);color:var(--teal);border:1px solid var(--tb)}
+.cookie-toggle-wrap{background:var(--d2);border:1px solid rgba(255,255,255,0.06);border-radius:var(--r);padding:20px;margin-bottom:10px}
+.cookie-toggle-wrap h3{font-family:"Plus Jakarta Sans",sans-serif;font-size:14px;font-weight:600;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between}
+.cookie-toggle-wrap p{font-size:13px;margin-bottom:0}
+.toggle{width:40px;height:22px;border-radius:11px;background:var(--d5);position:relative;cursor:pointer;transition:background 0.2s;flex-shrink:0}
+.toggle::after{content:'';position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform 0.2s}
+.toggle.on{background:var(--teal)}.toggle.on::after{transform:translateX(18px)}
+.toggle.disabled{cursor:not-allowed;opacity:0.5}
+.required-label{font-size:10px;color:var(--teal);border:1px solid var(--tb);padding:2px 8px;border-radius:4px;font-weight:500}
+.btn-accept{display:inline-block;background:var(--teal);color:#000;font-family:"Plus Jakarta Sans",sans-serif;font-weight:700;font-size:13px;letter-spacing:0.07em;text-transform:uppercase;padding:12px 28px;border-radius:6px;border:none;cursor:pointer;margin-top:20px;transition:opacity 0.2s}
+.btn-accept:hover{opacity:0.85}
+footer{border-top:1px solid rgba(255,255,255,0.06);padding:32px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+footer p{font-size:12px;color:rgba(255,255,255,0.3);margin:0}
+footer a{font-size:12px;color:rgba(255,255,255,0.3);text-decoration:none}
+footer a:hover{color:var(--teal)}
+/* COOKIE BANNER */
+.cookie-banner{position:fixed;bottom:24px;left:24px;right:24px;max-width:560px;background:#1a1a1a;border:1px solid rgba(115,221,228,0.25);border-radius:12px;padding:20px 24px;z-index:9999;box-shadow:0 8px 32px rgba(0,0,0,0.5);animation:slideUp 0.4s ease both}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.cookie-banner p{font-size:13px;color:var(--mu);margin-bottom:14px;font-weight:300}
+.cookie-banner-btns{display:flex;gap:10px;flex-wrap:wrap}
+.cb-accept{background:var(--teal);color:#000;border:none;font-family:"Plus Jakarta Sans",sans-serif;font-size:12px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;padding:9px 20px;border-radius:6px;cursor:pointer}
+.cb-decline{background:none;color:var(--mu);border:1px solid var(--d5);font-family:"Plus Jakarta Sans",sans-serif;font-size:12px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;padding:9px 20px;border-radius:6px;cursor:pointer}
+.cb-decline:hover{border-color:rgba(255,255,255,0.3);color:var(--tx)}
+@media(max-width:600px){nav{padding:16px 20px}.wrap{padding:40px 20px 80px}footer{padding:24px 20px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html"><img src="data:image/png;base64,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" alt="SmartVibes"></a>
+  <a href="index.html">← Back to site</a>
+</nav>
+
+<div class="wrap">
+  <p class="page-label">Legal</p>
+  <h1>Cookie Policy</h1>
+  <p class="last-updated">Last updated: April 2026 &nbsp;·&nbsp; SmartVibes Limited, Nicosia, Cyprus</p>
+
+  <h2>1. What Are Cookies?</h2>
+  <p>Cookies are small text files placed on your device when you visit a website. They are widely used to make websites work more efficiently, provide a better user experience, and give website owners useful information about how their site is used.</p>
+  <p>This Cookie Policy explains how SmartVibes Limited ("SmartVibes", "we", "us", or "our") uses cookies and similar technologies on <strong>smartvibes.tech</strong> and what choices you have.</p>
+
+  <h2>2. How We Use Cookies</h2>
+  <p>We use cookies and similar tracking technologies for the following purposes:</p>
+  <ul>
+    <li><strong>Essential functionality</strong> — to ensure our website works correctly and securely</li>
+    <li><strong>Analytics</strong> — to understand how visitors use our site so we can improve it (e.g. which pages are most visited, where visitors come from)</li>
+    <li><strong>Performance</strong> — to ensure pages load quickly and efficiently</li>
+    <li><strong>Preferences</strong> — to remember your settings and choices (such as cookie consent)</li>
+  </ul>
+  <p>We do <strong>not</strong> use cookies for advertising or to track you across other websites. Our website does not display third-party advertisements.</p>
+
+  <h2>3. Types of Cookies We Use</h2>
+  <table class="cookie-table">
+    <thead><tr><th>Cookie Type</th><th>Purpose</th><th>Duration</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Strictly Necessary</strong></td><td>Required for the site to function — page navigation, form submissions, security. These cannot be disabled.</td><td>Session</td><td><span class="badge">Required</span></td></tr>
+      <tr><td><strong>Preference</strong></td><td>Remembers your cookie consent choice so you are not asked again on every visit.</td><td>12 months</td><td><span class="badge">Required</span></td></tr>
+      <tr><td><strong>Analytics</strong></td><td>Helps us understand how visitors interact with the website — pages visited, time spent, device type. Data is anonymised and used only to improve our service.</td><td>Up to 13 months</td><td>Optional</td></tr>
+      <tr><td><strong>Third-party (Fonts)</strong></td><td>We use Google Fonts to display our branded typography. Google may set a cookie when delivering font files.</td><td>1 year</td><td>Optional</td></tr>
+      <tr><td><strong>Embedded Video</strong></td><td>When video content is shown on our site (e.g. via YouTube or Vimeo), those platforms may set their own cookies when the video loads.</td><td>Varies</td><td>Optional</td></tr>
+    </tbody>
+  </table>
+
+  <h2>4. Your Cookie Choices</h2>
+  <p>You can manage your cookie preferences at any time. Strictly necessary cookies cannot be disabled as they are essential to operate the site. For all other cookies, you can choose below:</p>
+
+  <div class="cookie-toggle-wrap">
+    <h3>Strictly Necessary <span class="required-label">Always On</span></h3>
+    <p>These cookies are required for the website to function and cannot be switched off.</p>
+  </div>
+  <div class="cookie-toggle-wrap">
+    <h3>Analytics Cookies <div class="toggle" id="tgl-analytics" onclick="toggleCookie('analytics')"></div></h3>
+    <p>Help us understand how visitors use our site by collecting anonymous usage data. No personal information is tracked.</p>
+  </div>
+  <div class="cookie-toggle-wrap">
+    <h3>Third-party Media <div class="toggle" id="tgl-media" onclick="toggleCookie('media')"></div></h3>
+    <p>Required if you view embedded video content (YouTube, Vimeo). These platforms may set their own cookies when media loads.</p>
+  </div>
+  <button class="btn-accept" onclick="savePreferences()">Save My Preferences</button>
+
+  <h2>5. Managing Cookies in Your Browser</h2>
+  <p>In addition to the controls above, you can manage or delete cookies through your browser settings at any time. Most browsers allow you to:</p>
+  <ul>
+    <li>View what cookies have been set and delete them</li>
+    <li>Block all cookies from specific websites</li>
+    <li>Block all third-party cookies</li>
+    <li>Clear all cookies when you close your browser</li>
+  </ul>
+  <p>Please note that disabling certain cookies may affect the functionality of our website. For guidance on managing cookies in your specific browser, visit your browser's help documentation.</p>
+
+  <h2>6. Third-Party Services</h2>
+  <p>Our website may include content from third-party services whose use of cookies is governed by their own privacy and cookie policies:</p>
+  <ul>
+    <li><strong>Google Fonts</strong> — used for typography: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+    <li><strong>YouTube</strong> — used for embedded video content: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google/YouTube Privacy Policy</a></li>
+    <li><strong>Vimeo</strong> — used for embedded video content: <a href="https://vimeo.com/privacy" target="_blank" rel="noopener">Vimeo Privacy Policy</a></li>
+    <li><strong>Cloudflare</strong> — used for website security and performance: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare Privacy Policy</a></li>
+  </ul>
+  <p>SmartVibes is not responsible for the content or privacy practices of these third-party services.</p>
+
+  <h2>7. Legal Basis</h2>
+  <p>Our use of cookies is in accordance with the EU ePrivacy Directive (Cookie Law) and the General Data Protection Regulation (GDPR), as applicable in Cyprus and the European Union. We rely on your consent for non-essential cookies, and on our legitimate interest for strictly necessary cookies.</p>
+
+  <h2>8. Changes to This Policy</h2>
+  <p>We may update this Cookie Policy from time to time to reflect changes in technology, legal requirements, or our practices. When we make changes, we will update the "Last updated" date at the top of this page. We encourage you to review this policy periodically.</p>
+
+  <h2>9. Contact Us</h2>
+  <p>If you have any questions about our use of cookies or this policy, please contact us via the <a href="index.html#contact">contact section</a> on our website.</p>
+</div>
+
+<footer>
+  <p>© 2025 SmartVibes Limited. All rights reserved.</p>
+  <div style="display:flex;gap:20px"><a href="cookies.html">Cookie Policy</a><a href="index.html">Back to site</a></div>
+</footer>
+
+<script>
+function toggleCookie(id){
+  const el=document.getElementById('tgl-'+id);
+  el.classList.toggle('on');
+}
+function savePreferences(){
+  const analytics=document.getElementById('tgl-analytics').classList.contains('on');
+  const media=document.getElementById('tgl-media').classList.contains('on');
+  localStorage.setItem('sv_cookies',JSON.stringify({analytics,media,saved:true,date:new Date().toISOString()}));
+  alert('Your cookie preferences have been saved.');
+}
+// Load saved preferences
+const saved=localStorage.getItem('sv_cookies');
+if(saved){
+  const prefs=JSON.parse(saved);
+  if(prefs.analytics)document.getElementById('tgl-analytics').classList.add('on');
+  if(prefs.media)document.getElementById('tgl-media').classList.add('on');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KNX Smart Home Estimator Cyprus | SmartVibes</title>
+<meta name="description" content="Get a budget estimate for your KNX smart home or building automation project in Cyprus. SmartVibes - certified KNX integrators in Nicosia.">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--t:#73DDE4;--td:rgba(115,221,228,.1);--tb:rgba(115,221,228,.22);--bk:#000;--d1:#111;--d2:#1a1a1a;--d3:#222;--d5:#333;--tx:#fff;--mu:rgba(255,255,255,.45);--di:rgba(255,255,255,.18);--r:8px;--rs:6px}
+body{font-family:"DM Sans",sans-serif;background:var(--bk);color:var(--tx);min-height:100vh;font-size:15px;line-height:1.6}
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;border-bottom:1px solid rgba(255,255,255,.06);position:sticky;top:0;z-index:100;background:rgba(0,0,0,.96);backdrop-filter:blur(12px)}
+.hdr img{height:24px;width:auto}
+.hdr-b{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--t);border:1px solid var(--tb);padding:5px 12px;border-radius:20px}
+.pb{height:2px;background:var(--d3)}.pf{height:100%;background:var(--t);transition:width .5s ease;width:20%}
+.wrap{max-width:900px;margin:0 auto;padding:36px 24px 80px}
+.hero{padding:36px 0 28px}
+.ey{font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--t);margin-bottom:12px}
+h1{font-family:"Plus Jakarta Sans",sans-serif;font-size:clamp(24px,4vw,42px);font-weight:700;line-height:1.05;letter-spacing:-.02em;margin-bottom:10px}
+h1 span{color:var(--t)}
+.hs{color:var(--mu);max-width:500px;font-weight:300;font-size:14px}
+.stepper{display:flex;margin:28px 0 24px;position:relative}
+.stepper::before{content:"";position:absolute;top:18px;left:18px;right:18px;height:1px;background:var(--d5)}
+.si{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;z-index:1}
+.sb{width:36px;height:36px;border-radius:50%;border:1px solid var(--d5);background:var(--d2);display:flex;align-items:center;justify-content:center;font-family:"Plus Jakarta Sans",sans-serif;font-size:12px;font-weight:700;color:var(--di);transition:all .3s}
+.si.active .sb{border-color:var(--t);background:var(--t);color:#000;box-shadow:0 0 14px rgba(115,221,228,.3)}
+.si.done .sb{border-color:rgba(115,221,228,.4);background:var(--td);color:var(--t)}
+.si.done .sb::after{content:"\u2713"}
+.sl{font-size:10px;color:var(--di);white-space:nowrap}
+.si.active .sl{color:var(--t)}.si.done .sl{color:var(--mu)}
+.panel{background:var(--d1);border:1px solid rgba(255,255,255,.06);border-radius:var(--r);padding:26px;margin-bottom:12px;display:none}
+.panel.active{display:block;animation:fu .3s ease both}
+@keyframes fu{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.pt{font-family:"Plus Jakarta Sans",sans-serif;font-size:17px;font-weight:700;margin-bottom:3px}
+.ps{font-size:13px;color:var(--mu);margin-bottom:22px;font-weight:300}
+label.fl{display:block;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--mu);margin-bottom:5px;font-weight:500}
+input[type=text],input[type=email],input[type=tel],input[type=number],textarea,select{width:100%;background:var(--d2);border:1px solid var(--d5);border-radius:var(--rs);color:var(--tx);font-family:"DM Sans",sans-serif;font-size:14px;padding:10px 12px;outline:none;transition:border-color .2s;appearance:none}
+input:focus,textarea:focus,select:focus{border-color:var(--t)}
+textarea{resize:vertical;min-height:80px;line-height:1.6}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2373DDE4' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;cursor:pointer}
+.fg{margin-bottom:14px}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:580px){.fr{grid-template-columns:1fr}}
+.rg{display:flex;align-items:center;gap:12px}
+.rg input[type=range]{flex:1;height:3px;background:var(--d5);border:none;border-radius:2px;padding:0;cursor:pointer;accent-color:var(--t)}
+.rv{font-family:"Plus Jakarta Sans",sans-serif;font-size:14px;font-weight:700;color:var(--t);min-width:28px;text-align:right}
+.fb{background:var(--d2);border:1px solid var(--d5);border-radius:var(--r);padding:16px;margin-bottom:10px;transition:border-color .2s}
+.fb:hover{border-color:var(--tb)}
+.fh{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.fn-sel{background:transparent;border:none;border-bottom:1px solid var(--d5);border-radius:0;color:var(--t);font-family:"Plus Jakarta Sans",sans-serif;font-size:13px;font-weight:700;padding:2px 4px;width:200px;outline:none;cursor:pointer;background-image:none;appearance:auto}
+.rmf{background:none;border:none;color:var(--di);font-size:17px;cursor:pointer;padding:3px;line-height:1}
+.rmf:hover{color:#f55}
+.sub{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--t);margin:14px 0 8px}
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:7px}
+.cb{background:var(--d3);border:1px solid var(--d5);border-radius:var(--rs);padding:8px 10px}
+.cb label{display:block;font-size:10px;color:var(--mu);margin-bottom:3px;line-height:1.3}
+.cb input[type=number]{padding:4px 7px;font-size:14px;font-weight:600;text-align:center}
+.kpg{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:7px;margin-bottom:10px}
+.kpc{background:var(--d3);border:1px solid var(--d5);border-radius:var(--rs);padding:10px 12px;cursor:pointer;transition:all .2s;user-select:none}
+.kpc:hover{border-color:var(--tb)}.kpc.sel{border-color:var(--t);background:var(--td)}
+.kpc .kn{font-size:12px;font-weight:600;color:var(--tx);margin-bottom:2px}
+.kpc .kd{font-size:11px;color:var(--mu)}.kpc.sel .kn{color:var(--t)}
+.add-f{display:flex;align-items:center;gap:8px;background:none;border:1.5px dashed var(--d5);border-radius:var(--r);padding:12px 16px;color:var(--mu);font-family:"DM Sans",sans-serif;font-size:14px;cursor:pointer;width:100%;transition:all .2s;margin-top:4px}
+.add-f:hover{border-color:var(--t);color:var(--t)}
+.sysg{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:8px}
+.sysc{border:1px solid var(--d5);border-radius:var(--rs);padding:10px 12px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:9px;font-size:13px;color:var(--mu);background:var(--d2);user-select:none}
+.sysc:hover{border-color:var(--tb);color:var(--tx)}.sysc.sel{border-color:var(--t);background:var(--td);color:var(--t)}
+.icg{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px}
+.ici{background:var(--d2);border:1px solid var(--d5);border-radius:var(--rs);padding:12px}
+.ici label{display:block;font-size:11px;color:var(--mu);margin-bottom:5px;line-height:1.3}
+.pkg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:9px}
+.pkg-c{background:var(--d2);border:1px solid var(--d5);border-radius:var(--r);padding:13px;cursor:pointer;transition:all .2s;user-select:none}
+.pkg-c:hover{border-color:var(--tb)}.pkg-c.sel{border-color:var(--t);background:var(--td)}
+.pkg-n{font-family:"Plus Jakarta Sans",sans-serif;font-size:12px;font-weight:700;color:var(--tx);margin-bottom:2px}
+.pkg-d{font-size:11px;color:var(--mu);line-height:1.4}.pkg-c.sel .pkg-n{color:var(--t)}
+.pkg-q{margin-top:8px;display:none}.pkg-c.sel .pkg-q{display:block}
+.ec{background:var(--d2);border:1px solid rgba(255,255,255,.06);border-radius:var(--r);padding:16px;margin-bottom:10px}
+.ec h3{font-family:"Plus Jakarta Sans",sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);margin-bottom:12px}
+.er{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px}
+.er:last-child{border-bottom:none}.er .k{color:var(--mu)}.er .v{font-weight:500;color:var(--tx)}
+.price-box{background:var(--td);border:1px solid var(--tb);border-radius:var(--r);padding:20px 24px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.price-box .pl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-bottom:4px}
+.price-box .pa{font-family:"Plus Jakarta Sans",sans-serif;font-size:28px;font-weight:800;color:var(--t)}
+.price-box .pa span{font-size:12px;font-weight:400;color:var(--mu);margin-left:4px}
+.mc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-bottom:16px}
+.mc{background:var(--d3);border:1px solid rgba(255,255,255,.06);border-radius:var(--rs);padding:12px}
+.mc .n{font-family:"Plus Jakarta Sans",sans-serif;font-size:1.7rem;font-weight:800;color:var(--t);line-height:1;margin-bottom:3px}
+.mc .l{font-size:11px;color:var(--mu);line-height:1.3}
+.bom-t{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}
+.bom-t th{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.08);text-align:left;background:var(--d3)}
+.bom-t td{padding:5px 10px;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:top}
+.bom-t .bs td{background:var(--d3);color:var(--t);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:7px 10px 4px;font-weight:600}
+.bom-t .bgt td{color:var(--t);font-size:14px;font-weight:800;font-family:"Plus Jakarta Sans",sans-serif;border-top:1px solid rgba(115,221,228,.3);padding-top:8px}
+.br{display:flex;gap:10px;justify-content:flex-end;margin-top:20px}
+.btn{font-family:"Plus Jakarta Sans",sans-serif;font-size:12px;font-weight:700;letter-spacing:.07em;padding:11px 24px;border-radius:var(--rs);cursor:pointer;border:1px solid transparent;transition:all .2s;text-transform:uppercase}
+.btn-g{background:none;border-color:var(--d5);color:var(--mu)}.btn-g:hover{border-color:rgba(255,255,255,.3);color:var(--tx)}
+.btn-p{background:var(--t);border-color:var(--t);color:#000}.btn-p:hover{opacity:.85}.btn-p:disabled{opacity:.4;cursor:not-allowed}
+.note{font-size:12px;color:var(--mu);background:rgba(115,221,228,.05);border:1px solid rgba(115,221,228,.15);border-radius:var(--rs);padding:10px 14px;margin-top:10px;line-height:1.5}
+.note strong{color:var(--t)}
+.sw{text-align:center;padding:48px 16px;display:none}.sw.show{display:block;animation:fu .4s ease both}
+.si-ok{width:64px;height:64px;border-radius:50%;background:var(--td);border:1px solid var(--tb);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px;color:var(--t)}
+.sw h2{font-family:"Plus Jakarta Sans",sans-serif;font-size:24px;font-weight:700;margin-bottom:10px}
+.sw p{color:var(--mu);max-width:420px;margin:0 auto;font-size:14px;line-height:1.7}
+.sw-ref{display:inline-block;margin-top:16px;background:var(--td);border:1px solid var(--tb);border-radius:6px;padding:9px 18px;font-family:"Plus Jakarta Sans",sans-serif;font-size:14px;font-weight:700;color:var(--t);letter-spacing:.1em}
+</style>
+</head>
+<body>
+<header class="hdr">
+  <img src="data:image/png;base64,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" alt="SmartVibes">
+  <span class="hdr-b">KNX Smart Building Estimator</span>
+</header>
+<div class="pb"><div class="pf" id="pf"></div></div>
+<div class="wrap">
+  <div class="hero">
+    <p class="ey">KNX Smart Home &amp; Building Automation</p>
+    <h1>Design your<br><span>KNX smart system.</span></h1>
+    <p class="hs">Get an indicative budget for your KNX smart home or building automation project in Cyprus. This is a planning tool &mdash; not a final offer.</p>
+  </div>
+  <div class="stepper">
+    <div class="si active" id="si0"><div class="sb">1</div><div class="sl">Details</div></div>
+    <div class="si" id="si1"><div class="sb">2</div><div class="sl">Circuits</div></div>
+    <div class="si" id="si2"><div class="sb">3</div><div class="sl">Systems</div></div>
+    <div class="si" id="si3"><div class="sb">4</div><div class="sl">Access</div></div>
+    <div class="si" id="si4"><div class="sb">5</div><div class="sl">Estimate</div></div>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="panel active" id="step0">
+    <div class="pt">Your Details &amp; Project Brief</div>
+    <div class="ps">Tell us about yourself and your project so we can tailor the estimate.</div>
+    <div class="fr">
+      <div class="fg"><label class="fl">First Name *</label><input type="text" id="fname" placeholder="Constantinos"></div>
+      <div class="fg"><label class="fl">Last Name *</label><input type="text" id="lname" placeholder="Stavrou"></div>
+    </div>
+    <div class="fr">
+      <div class="fg"><label class="fl">Email *</label><input type="email" id="email" placeholder="you@email.com"></div>
+      <div class="fg"><label class="fl">Phone</label><input type="tel" id="phone" placeholder="+357 99 000 000"></div>
+    </div>
+    <div class="fr">
+      <div class="fg">
+        <label class="fl">Project Type</label>
+        <select id="projType">
+          <option value="">Select type...</option>
+          <option>New Build - Residential</option><option>Renovation - Residential</option>
+          <option>New Build - Commercial</option><option>Renovation - Commercial</option>
+          <option>Villa / Holiday Home</option><option>Hotel / Hospitality</option><option>Office / Corporate</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label class="fl">Project Stage</label>
+        <select id="projStage">
+          <option value="">Select stage...</option>
+          <option>Early Design / Concept</option><option>Permit / Architectural Stage</option>
+          <option>Under Construction</option><option>Fit-Out / Finishing</option><option>Existing / Retrofit</option>
+        </select>
+      </div>
+    </div>
+    <div class="fg">
+      <label class="fl">Project Location</label>
+      <select id="projLocation">
+        <option value="nicosia">Nicosia</option>
+        <option value="outside">Larnaca</option>
+        <option value="outside">Famagusta</option>
+        <option value="outside">Limassol</option>
+        <option value="paphos">Paphos</option>
+      </select>
+    </div>
+    <div class="fg">
+      <label class="fl">Total Property Area (max 1,000 m2)</label>
+      <div class="rg">
+        <input type="range" min="50" max="1000" step="10" value="250" id="areaSlider" oninput="document.getElementById('areaVal').textContent=this.value">
+        <span class="rv" id="areaVal">250</span>
+        <span style="font-size:12px;color:var(--mu)">m2</span>
+      </div>
+    </div>
+    <div class="fg"><label class="fl">Project Brief</label><textarea id="brief" placeholder="Describe your vision - what automation matters most?"></textarea></div>
+    <div class="br"><button class="btn btn-p" onclick="goTo(1)">Next</button></div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="panel" id="step1">
+    <div class="pt">KNX Circuits, Keypads &amp; Dimming Per Floor</div>
+    <div class="ps">Configure each floor. Module sizing is calculated automatically.</div>
+    <div class="fg">
+      <label class="fl">Number of Floors (max 12)</label>
+      <div class="rg">
+        <input type="range" min="1" max="12" step="1" value="2" id="floorCount" oninput="document.getElementById('fcv').textContent=this.value">
+        <span class="rv" id="fcv">2</span>
+        <span style="font-size:12px;color:var(--mu)">floors</span>
+      </div>
+    </div>
+    <button class="btn btn-p" onclick="buildFloors()" style="margin-bottom:16px">Apply Floors</button>
+    <div id="floorBlocks"></div>
+    <button class="add-f" onclick="addFloor()"><span style="font-size:18px;color:var(--t)">+</span> Add another floor</button>
+    <div class="br">
+      <button class="btn btn-g" onclick="goTo(0)">Back</button>
+      <button class="btn btn-p" onclick="goTo(2)">Next</button>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="panel" id="step2">
+    <div class="pt">KNX Integrated Systems</div>
+    <div class="ps">Select the systems to integrate.</div>
+    <div class="sysg" id="sysg"></div>
+    <div class="fg" style="margin-top:18px"><label class="fl">Additional Notes</label><textarea id="sysNotes" placeholder="Specific brands, existing equipment, special requirements?" style="min-height:60px"></textarea></div>
+    <div class="br">
+      <button class="btn btn-g" onclick="goTo(1)">Back</button>
+      <button class="btn btn-p" onclick="goTo(3)">Next</button>
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="panel" id="step3">
+    <div class="pt">Access &amp; Upgrade Options</div>
+    <div class="ps">Video intercom, access control and optional upgrades.</div>
+    <div class="sub">Video Intercom &amp; Access Control</div>
+    <div class="icg">
+      <div class="ici"><label>Outdoor Door Station (standard)</label><input type="number" min="0" max="20" value="0" id="ic_out" style="text-align:center;font-size:15px;font-weight:600"></div>
+      <div class="ici"><label>Outdoor Station + Numeric Keypad</label><input type="number" min="0" max="20" value="0" id="ic_out_kp" style="text-align:center;font-size:15px;font-weight:600"></div>
+      <div class="ici"><label>Indoor Monitor 7"</label><input type="number" min="0" max="30" value="0" id="ic_indoor" style="text-align:center;font-size:15px;font-weight:600"></div>
+      <div class="ici"><label>RFID / Card Access Reader</label><input type="number" min="0" max="30" value="0" id="ic_reader" style="text-align:center;font-size:15px;font-weight:600"></div>
+    </div>
+    <div class="sub" style="margin-top:20px">Optional Upgrade Packages</div>
+    <div class="pkg-grid" id="pkgg"></div>
+    <div class="br">
+      <button class="btn btn-g" onclick="goTo(2)">Back</button>
+      <button class="btn btn-p" onclick="calcAndShow()">Calculate Estimate</button>
+    </div>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="panel" id="step4">
+    <div class="pt">Your KNX Smart Building Budget Estimate</div>
+    <div class="ps">Indicative configuration based on your inputs.</div>
+    <div class="note"><strong>Important:</strong> This is a budgeting guide only - not a final offer. Prices are indicative. A detailed quotation will be confirmed after design review. Cabling installation, conduit, panel enclosures and VAT are not included. Cable supply is included (15m per device).</div>
+    <div style="margin-top:16px" id="mcards"></div>
+    <div id="priceCard"></div>
+    <div id="bomCard"></div>
+    <div id="sysCard"></div>
+    <div id="pkgCard"></div>
+    <div class="note" style="margin-top:16px">
+      <strong>How to submit your request:</strong> Clicking the button below will open your email app (Gmail, Outlook, Apple Mail) with all your project details pre-filled, addressed to our team at hello@smartvibes.tech. Simply press <strong>Send</strong> in your email app. You can also attach your floorplans to that email. We will respond within 24 hours.
+    </div>
+    <div class="fg" style="margin-top:16px">
+      <label class="fl">Preferred Contact Time</label>
+      <select id="ctime"><option value="">No preference</option><option>Morning (8:00-12:00)</option><option>Afternoon (12:00-17:00)</option><option>Evening (17:00-20:00)</option></select>
+    </div>
+    <div class="fg"><label class="fl">Final Comments</label><textarea id="fnotes" placeholder="Anything else we should know..." style="min-height:60px"></textarea></div>
+    <div class="br">
+      <button class="btn btn-g" onclick="goTo(3)">Back</button>
+      <button class="btn btn-p" id="subBtn" onclick="submitForm()">Send Quote Request</button>
+    </div>
+  </div>
+
+  <div class="sw" id="sw">
+    <div class="si-ok">&#10003;</div>
+    <h2>Email App Opened!</h2>
+    <p>Your project details have been loaded into your email app addressed to hello@smartvibes.tech.<br><br>Please press <strong style="color:var(--t)">Send</strong> in your email app to complete your request. You can also attach floorplans before sending.<br><br>A SmartVibes KNX specialist will contact you within 24 hours.</p>
+    <div class="sw-ref" id="refNum"></div>
+  </div>
+</div>
+<script>
+var S={step:0,total:5};
+var floors=[];
+var selectedSystems=new Set();
+var selectedPkgs=new Map();
+
+var P={
+  act8:230,act12:345,act16:345,act24:489,
+  ac_gw:200,conv12:345,
+  triac4:380,v10_4:207,cv4:158,dali_gw:292,
+  kp_glass:260,kp_thermo:265,kp_lcd:125,
+  kp_metal_laser:130,kp_metal_frame:130,kp_plastic:43,
+  hw_temp:70,
+  tp4:350,tp8:800,tp10:1280,
+  ic_out:480,ic_out_kp:580,ic_indoor:320,ic_reader:280,
+  sensor_ceil:110,sensor_flush:86,
+  knx_ps:233,ip_router:232,line_coupler:230,
+  multiroom_zone:300,multiroom_spk:350,
+  cinema_amp:1000,cinema_sub:300
+};
+
+var KP=[
+  {id:"glass",n:"Glass Touch Keypad",d:"KNX - up to 9 buttons, backlit glass"},
+  {id:"lcd",n:"LCD Push Button",d:"KNX - up to 8 functions with display"},
+  {id:"metal_laser",n:"Metal Keypad Laser Engraved",d:"KNX - up to 8 buttons, laser engraved metal"},
+  {id:"metal_frame",n:"Metal Frame Keypad",d:"KNX - up to 8 buttons, metal frame"},
+  {id:"plastic",n:"Standard Press Keypad",d:"KNX universal input interface - flush mounted"}
+];
+
+var SYS=[
+  {id:"lights",l:"Lighting Control",i:"&#128161;"},
+  {id:"shades",l:"Motorised Shading",i:"&#129695;"},
+  {id:"climate",l:"Climate / HVAC",i:"&#127777;"},
+  {id:"cctv",l:"CCTV / Cameras",i:"&#128247;"},
+  {id:"alarm",l:"Alarm & Security",i:"&#128272;"},
+  {id:"av",l:"Audio / Video",i:"&#128266;"},
+  {id:"energy",l:"Energy Monitoring",i:"&#9889;"},
+  {id:"access",l:"Access Control",i:"&#128682;"},
+  {id:"pool",l:"Pool Automation",i:"&#127944;"},
+  {id:"solar",l:"Solar / Battery",i:"&#9728;"},
+  {id:"ev",l:"EV Charging",i:"&#128268;"}
+];
+
+var PKG=[
+  {id:"multiroom",n:"Multiroom Audio",d:"Distributed audio - amplifier zones + speakers",
+   f:[{id:"mr_zones",l:"Number of zones",v:0},{id:"mr_spk_pairs",l:"Speaker pairs",v:0}]},
+  {id:"cinema",n:"5.1 Home Cinema",d:"Amplifier, surround speakers and subwoofer",
+   f:[{id:"cinema_qty",l:"Number of rooms",v:0}]}
+];
+
+function goTo(n){
+  document.getElementById("step"+S.step).classList.remove("active");
+  var items=document.querySelectorAll(".si");
+  for(var j=0;j<items.length;j++){
+    items[j].classList.remove("active","done");
+    if(j<n)items[j].classList.add("done");
+    else if(j===n)items[j].classList.add("active");
+  }
+  S.step=n;
+  document.getElementById("step"+n).classList.add("active");
+  document.getElementById("pf").style.width=((n+1)/S.total*90)+"%";
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function buildFloors(){
+  var count=Math.min(12,parseInt(document.getElementById("floorCount").value)||2);
+  floors=[];
+  var def=["Ground Floor","First Floor","Second Floor","Third Floor","Fourth Floor","Fifth Floor","Sixth Floor","Seventh Floor","Eighth Floor","Ninth Floor","Tenth Floor","Eleventh Floor"];
+  for(var i=0;i<count;i++){
+    floors.push({name:def[i]||"Floor "+(i+1),onoff:8,motors:2,ac:1,ufh:0,hw:0,hwTemp:0,
+      kpType:"glass",kpQty:4,kpThermo:1,convSw:0,
+      dimmCh:0,daliCh:0,v10Ch:0,cvCh:0,
+      tp4:0,tp8:0,tp10:0,sCeil:0,sSurf:0,sWall:0});
+  }
+  renderFloors();
+}
+
+function addFloor(){
+  if(floors.length>=12){alert("Maximum 12 floors.");return;}
+  var def=["Ground Floor","First Floor","Second Floor","Third Floor","Fourth Floor","Fifth Floor","Sixth Floor","Seventh Floor","Eighth Floor","Ninth Floor","Tenth Floor","Eleventh Floor"];
+  floors.push({name:def[floors.length]||"Floor "+(floors.length+1),onoff:4,motors:0,ac:0,ufh:0,hw:0,hwTemp:0,
+    kpType:"glass",kpQty:2,kpThermo:0,convSw:0,
+    dimmCh:0,daliCh:0,v10Ch:0,cvCh:0,
+    tp4:0,tp8:0,tp10:0,sCeil:0,sSurf:0,sWall:0});
+  renderFloors();
+}
+
+function renderFloors(){
+  var FLOOR_NAMES=["Ground Floor","First Floor","Second Floor","Third Floor","Fourth Floor","Fifth Floor","Sixth Floor","Seventh Floor","Eighth Floor","Basement","Penthouse","Mezzanine"];
+  var h="";
+  for(var i=0;i<floors.length;i++){
+    var fl=floors[i];
+    var opts="";
+    for(var j=0;j<FLOOR_NAMES.length;j++){
+      opts+="<option"+(fl.name===FLOOR_NAMES[j]?" selected":"")+">"+FLOOR_NAMES[j]+"</option>";
+    }
+    var kph="";
+    for(var k=0;k<KP.length;k++){
+      kph+="<div class='kpc"+(fl.kpType===KP[k].id?" sel":"")+"' onclick='setKp("+i+"," +k+",this)'><div class='kn'>"+KP[k].n+"</div><div class='kd'>"+KP[k].d+"</div></div>";
+    }
+    h+="<div class='fb'>";
+    h+="<div class='fh'><select class='fn-sel' onchange='floors["+i+"].name=this.value'>"+opts+"</select><button class='rmf' onclick='rmFloor("+i+")'>x</button></div>";
+    h+="<div class='sub'>Switching &amp; Control</div>";
+    h+="<div class='cg'>";
+    h+="<div class='cb'><label>On/Off circuits</label><input type='number' min='0' max='300' value='"+fl.onoff+"' onchange='floors["+i+"].onoff=+this.value'></div>";
+    h+="<div class='cb'><label>Motor/Shade</label><input type='number' min='0' max='200' value='"+fl.motors+"' onchange='floors["+i+"].motors=+this.value'></div>";
+    h+="<div class='cb'><label>A/C zones</label><input type='number' min='0' max='64' value='"+(fl.ac||0)+"' onchange='floors["+i+"].ac=+this.value'></div>";
+    h+="<div class='cb'><label>Underfloor Heating</label><input type='number' min='0' max='64' value='"+(fl.ufh||0)+"' onchange='floors["+i+"].ufh=+this.value'></div>";
+    h+="<div class='cb'><label>Hot Water zones</label><input type='number' min='0' max='30' value='"+(fl.hw||0)+"' onchange='floors["+i+"].hw=+this.value'></div>";
+    h+="<div class='cb'><label>HW Temp sensors</label><input type='number' min='0' max='30' value='"+(fl.hwTemp||0)+"' onchange='floors["+i+"].hwTemp=+this.value'></div>";
+    h+="</div>";
+    h+="<div class='sub'>Dimmable Circuits</div>";
+    h+="<div class='cg'>";
+    h+="<div class='cb'><label>Triac circuits</label><input type='number' min='0' max='200' value='"+fl.dimmCh+"' onchange='floors["+i+"].dimmCh=+this.value'></div>";
+    h+="<div class='cb'><label>DALI circuits</label><input type='number' min='0' max='512' value='"+fl.daliCh+"' onchange='floors["+i+"].daliCh=+this.value'></div>";
+    h+="<div class='cb'><label>0-10V circuits</label><input type='number' min='0' max='200' value='"+fl.v10Ch+"' onchange='floors["+i+"].v10Ch=+this.value'></div>";
+    h+="<div class='cb'><label>Const. Voltage</label><input type='number' min='0' max='200' value='"+fl.cvCh+"' onchange='floors["+i+"].cvCh=+this.value'></div>";
+    h+="</div>";
+    h+="<div class='sub'>Keypad Type (select one per floor)</div>";
+    h+="<div class='kpg'>"+kph+"</div>";
+    h+="<div class='cg'>";
+    h+="<div class='cb'><label>Keypads qty</label><input type='number' min='0' max='100' value='"+fl.kpQty+"' onchange='floors["+i+"].kpQty=+this.value'></div>";
+    h+="<div class='cb'><label>Thermostats</label><input type='number' min='0' max='30' value='"+fl.kpThermo+"' onchange='floors["+i+"].kpThermo=+this.value'></div>";
+    h+="<div class='cb'><label>Press switches</label><input type='number' min='0' max='300' value='"+(fl.convSw||0)+"' onchange='floors["+i+"].convSw=+this.value'></div>";
+    h+="<div class='cb'><label>Touch 4in</label><input type='number' min='0' max='10' value='"+fl.tp4+"' onchange='floors["+i+"].tp4=+this.value'></div>";
+    h+="<div class='cb'><label>Touch 8in</label><input type='number' min='0' max='10' value='"+fl.tp8+"' onchange='floors["+i+"].tp8=+this.value'></div>";
+    h+="<div class='cb'><label>Touch 10in</label><input type='number' min='0' max='10' value='"+fl.tp10+"' onchange='floors["+i+"].tp10=+this.value'></div>";
+    h+="</div>";
+    h+="<div class='sub'>Presence Sensors</div>";
+    h+="<div class='cg'>";
+    h+="<div class='cb'><label>Ceiling Flush</label><input type='number' min='0' max='100' value='"+(fl.sCeil||0)+"' onchange='floors["+i+"].sCeil=+this.value'></div>";
+    h+="<div class='cb'><label>Ceiling Surface</label><input type='number' min='0' max='100' value='"+(fl.sSurf||0)+"' onchange='floors["+i+"].sSurf=+this.value'></div>";
+    h+="<div class='cb'><label>Wall Sensor</label><input type='number' min='0' max='100' value='"+(fl.sWall||0)+"' onchange='floors["+i+"].sWall=+this.value'></div>";
+    h+="</div></div>";
+  }
+  document.getElementById("floorBlocks").innerHTML=h;
+}
+
+function setKp(fi,ki,el){
+  floors[fi].kpType=KP[ki].id;
+  var all=el.closest(".fb").querySelectorAll(".kpc");
+  for(var j=0;j<all.length;j++)all[j].classList.remove("sel");
+  el.classList.add("sel");
+}
+function rmFloor(i){if(floors.length<=1)return;floors.splice(i,1);renderFloors();}
+
+function calcMods(ch,sizes){
+  var sorted=sizes.slice().sort(function(a,b){return b-a;});
+  var rem=ch,res={};
+  for(var i=0;i<sorted.length;i++){var c=Math.floor(rem/sorted[i]);if(c>0){res[sorted[i]]=c;rem-=c*sorted[i];}}
+  if(rem>0){var sm=sorted[sorted.length-1];res[sm]=(res[sm]||0)+1;}
+  return res;
+}
+
+function cheapestMix(totalCh){
+  if(totalCh<=0)return {};
+  var MODS=[{ch:24,p:489},{ch:16,p:345},{ch:12,p:345},{ch:8,p:230}];
+  var best=null,bestCost=9999999;
+  function tryPack(rem,chosen,cost){
+    if(rem<=0){
+      var total=0;for(var x=0;x<chosen.length;x++)total+=chosen[x];
+      var spare=total-totalCh;
+      if(spare>=0&&spare<=8&&cost<bestCost){bestCost=cost;best=chosen.slice();}
+      return;
+    }
+    if(chosen.length>=6)return;
+    for(var i=0;i<MODS.length;i++){
+      chosen.push(MODS[i].ch);
+      tryPack(rem-MODS[i].ch,chosen,cost+MODS[i].p);
+      chosen.pop();
+    }
+  }
+  tryPack(totalCh,[],0);
+  if(!best){var fb=calcMods(totalCh,[24,16,12,8]);best=[];for(var k in fb)for(var n=0;n<fb[k];n++)best.push(parseInt(k));}
+  var res={};
+  for(var i=0;i<best.length;i++){res[best[i]]=(res[best[i]]||0)+1;}
+  return res;
+}
+
+function calcAndShow(){
+  var tOO=0,tMot=0,tAC=0,tUFH=0,tHW=0,tHWTemp=0,tConv=0;
+  var tDimm=0,tDali=0,tV10=0,tCv=0;
+  var tKp=0,tThermo=0,tTp4=0,tTp8=0,tTp10=0;
+  var sCeil=0,sSurf=0,sWall=0;
+  var kpByType={};
+  for(var i=0;i<floors.length;i++){
+    var f=floors[i];
+    tOO+=+f.onoff;tMot+=+f.motors;tAC+=+(f.ac||0);tUFH+=+(f.ufh||0);tHW+=+(f.hw||0);tHWTemp+=+(f.hwTemp||0);tConv+=+(f.convSw||0);
+    tDimm+=+(f.dimmCh||0);tDali+=+(f.daliCh||0);tV10+=+(f.v10Ch||0);tCv+=+(f.cvCh||0);
+    tKp+=+(f.kpQty||0);tThermo+=+(f.kpThermo||0);
+    tTp4+=+(f.tp4||0);tTp8+=+(f.tp8||0);tTp10+=+(f.tp10||0);
+    sCeil+=+(f.sCeil||0);sSurf+=+(f.sSurf||0);sWall+=+(f.sWall||0);
+    if(f.kpType)kpByType[f.kpType]=(kpByType[f.kpType]||0)+(+f.kpQty||0);
+  }
+  var icOut=+document.getElementById("ic_out").value;
+  var icOutKp=+document.getElementById("ic_out_kp").value;
+  var icIn=+document.getElementById("ic_indoor").value;
+  var icRead=+document.getElementById("ic_reader").value;
+  var loc=document.getElementById("projLocation").value;
+  var labRate=loc==="paphos"?0.40:(loc==="outside"?0.30:0.20);
+
+  // Switching relays: on/off + UFH + HW (not AC - uses gateway)
+  var swCh=tOO+tUFH+tHW;
+  var swMods=cheapestMix(swCh);
+  var swTotal=0;for(var k in swMods)swTotal+=swMods[k];
+  // Motor actuators: 2ch per motor
+  var motCh=tMot*2;
+  var motMods=cheapestMix(motCh);
+  var motTotal=0;for(var k in motMods)motTotal+=motMods[k];
+  // AC gateways: 1 per zone
+  var acGws=tAC;
+  // Dimmers
+  var triacMods=tDimm>0?Math.ceil(tDimm/4):0;
+  var v10Mods=tV10>0?Math.ceil(tV10/4):0;
+  var cvMods=tCv>0?Math.ceil(tCv/4):0;
+  var daliGws=tDali>0?Math.ceil(tDali/16):0;
+  var dimTotal=triacMods+v10Mods+cvMods;
+  // Press switch input modules
+  var convMods=tConv>0?Math.ceil(tConv/12):0;
+  // Total devices for PS sizing
+  var allDev=swTotal+motTotal+acGws+convMods+dimTotal+daliGws+tKp+tThermo+tTp4+tTp8+tTp10+sCeil+sSurf+sWall+tHWTemp;
+  var psCount=allDev>55?2:1;
+  var needLC=allDev>55;
+
+  // BOM
+  var bom=[];
+  var ACT_LABELS={8:"KNX Multifunctional Actuator 8ch",12:"KNX Multifunctional Actuator 12ch",16:"KNX Multifunctional Actuator 16ch",24:"KNX Multifunctional Actuator 24ch"};
+  var actItems=[];
+  for(var k in swMods)actItems.push({d:ACT_LABELS[k]||"KNX Actuator "+k+"ch",q:swMods[k],u:P["act"+k]||345});
+  for(var k in motMods)actItems.push({d:"KNX Motor Actuator "+k+"ch ("+tMot+" motor"+(tMot>1?"s":"")+")",q:motMods[k],u:P["act"+k]||345});
+  if(acGws>0)actItems.push({d:"A/C Control Gateway ("+acGws+" zone"+(acGws>1?"s":"")+")",q:acGws,u:P.ac_gw});
+  if(actItems.length)bom.push({cat:"KNX Actuator Modules",items:actItems});
+
+  if(convMods>0)bom.push({cat:"KNX Binary Input Modules",items:[{d:"KNX Binary Input Module - flush press switch interface ("+tConv+" switches)",q:convMods,u:P.conv12}]});
+
+  var dimItems=[];
+  if(triacMods>0)dimItems.push({d:"KNX Universal Dimmer Triac ("+tDimm+" circuits)",q:triacMods,u:P.triac4});
+  if(v10Mods>0)dimItems.push({d:"KNX 0-10V Dimmer ("+tV10+" circuits)",q:v10Mods,u:P.v10_4});
+  if(cvMods>0)dimItems.push({d:"KNX Constant Voltage LED Dimmer ("+tCv+" circuits)",q:cvMods,u:P.cv4});
+  if(daliGws>0)dimItems.push({d:"DALI-2 Gateway incl. PSU ("+tDali+" channels)",q:daliGws,u:P.dali_gw});
+  if(dimItems.length)bom.push({cat:"Dimming Modules",items:dimItems});
+
+  var KP_PRICE={glass:P.kp_glass,lcd:P.kp_lcd,metal_laser:P.kp_metal_laser,metal_frame:P.kp_metal_frame,plastic:P.kp_plastic};
+  var KP_LABEL={glass:"Glass Touch Keypad KNX",lcd:"LCD Push Button KNX",metal_laser:"Metal Keypad Laser Engraved KNX",metal_frame:"Metal Frame Keypad KNX",plastic:"KNX Universal Input Interface (Press Switch)"};
+  var kpItems=[];
+  for(var t in kpByType){if(kpByType[t]>0)kpItems.push({d:KP_LABEL[t]||"Keypad KNX",q:kpByType[t],u:KP_PRICE[t]||P.kp_glass});}
+  if(tThermo>0)kpItems.push({d:"Glass Thermostat KNX",q:tThermo,u:P.kp_thermo});
+  if(tTp4>0)kpItems.push({d:'Touch Panel 4 inch',q:tTp4,u:P.tp4});
+  if(tTp8>0)kpItems.push({d:'Touch Panel 8 inch',q:tTp8,u:P.tp8});
+  if(tTp10>0)kpItems.push({d:'Touch Panel 10 inch',q:tTp10,u:P.tp10});
+  if(kpItems.length)bom.push({cat:"Keypads & Touch Panels",items:kpItems});
+
+  var sItems=[];
+  if(sCeil>0)sItems.push({d:"KNX Presence Sensor - Ceiling Flush",q:sCeil,u:P.sensor_ceil});
+  if(sSurf>0)sItems.push({d:"KNX Presence Sensor - Ceiling Surface",q:sSurf,u:P.sensor_ceil});
+  if(sWall>0)sItems.push({d:"KNX Presence Sensor - Wall",q:sWall,u:P.sensor_flush});
+  if(tHWTemp>0)sItems.push({d:"Hot Water Temperature Sensor",q:tHWTemp,u:P.hw_temp});
+  if(sItems.length)bom.push({cat:"Sensors",items:sItems});
+
+  var icItems=[];
+  if(icOut>0)icItems.push({d:"Outdoor Door Station (standard)",q:icOut,u:P.ic_out});
+  if(icOutKp>0)icItems.push({d:"Outdoor Door Station with Keypad",q:icOutKp,u:P.ic_out_kp});
+  if(icIn>0)icItems.push({d:'Indoor Video Monitor 7 inch',q:icIn,u:P.ic_indoor});
+  if(icRead>0)icItems.push({d:"RFID Card Access Reader",q:icRead,u:P.ic_reader});
+  if(icItems.length)bom.push({cat:"Intercom & Access Control",items:icItems});
+
+  var infraItems=[{d:"KNX Power Supply 640mA"+(psCount>1?" x2 (>55 devices)":""),q:psCount,u:P.knx_ps},{d:"KNX IP Router",q:1,u:P.ip_router}];
+  if(needLC)infraItems.splice(1,0,{d:"KNX Line Coupler (required - >55 devices)",q:1,u:P.line_coupler});
+  bom.push({cat:"KNX Infrastructure",items:infraItems});
+
+  var SYS_PRICE={alarm:300,cctv:200,energy:400,pool:450,solar:400,ev:400};
+  var SYS_LABEL={alarm:"Alarm & Security Integration",cctv:"CCTV / Camera Integration",energy:"Energy Management",pool:"Pool Automation",solar:"Solar / Battery Integration",ev:"EV Charging Integration"};
+  var addItems=[];
+  for(var id in SYS_PRICE){if(selectedSystems.has(id))addItems.push({d:SYS_LABEL[id],q:1,u:SYS_PRICE[id]});}
+  if(addItems.length)bom.push({cat:"Additional Systems",items:addItems});
+
+  var pkgItems=[];
+  selectedPkgs.forEach(function(p,id){
+    if(id==="multiroom"){
+      var z=+(document.getElementById("pkg_mr_zones")||{value:"0"}).value||0;
+      var sp=+(document.getElementById("pkg_mr_spk_pairs")||{value:"0"}).value||0;
+      if(z>0){pkgItems.push({d:"Multiroom Audio - Amplifier Zone",q:z,u:P.multiroom_zone});pkgItems.push({d:"Speaker cable per zone",q:z,u:25});}
+      if(sp>0)pkgItems.push({d:"Speaker Pair",q:sp,u:P.multiroom_spk});
+    }else if(id==="cinema"){
+      var qty=+(document.getElementById("pkg_cinema_qty")||{value:"0"}).value||0;
+      if(qty>0){pkgItems.push({d:"5.1 Cinema - Amplifier + Surround Speakers",q:qty,u:P.cinema_amp});pkgItems.push({d:"5.1 Subwoofer",q:qty,u:P.cinema_sub});pkgItems.push({d:"Home Cinema cable package",q:qty,u:150});}
+    }
+  });
+  if(pkgItems.length)bom.push({cat:"Optional Packages",items:pkgItems});
+
+  // Totals
+  var devForCable=tKp+tThermo+tConv+sCeil+sSurf+sWall+tTp4+tTp8+tTp10;
+  var cableCost=devForCable*15*1.10;
+  var hwTotal=0;
+  for(var i=0;i<bom.length;i++)for(var j=0;j<bom[i].items.length;j++)hwTotal+=bom[i].items[j].q*bom[i].items[j].u;
+  hwTotal+=cableCost;
+  var labour=hwTotal*labRate;
+  var grand=hwTotal+labour;
+  var lo=Math.floor(grand*0.90/500)*500;
+  var hi=Math.ceil(grand*1.15/500)*500;
+
+  // Module summary cards
+  var mh="<div class='mc-grid'>";
+  if(swTotal>0){var sb="";for(var k in swMods)sb+=swMods[k]+"x"+k+"ch ";mh+="<div class='mc'><div class='n'>"+swTotal+"</div><div class='l'>Switching Actuators<br><span style='color:var(--t);font-size:10px'>"+sb.trim()+(tMot>0?" + "+tMot+"mot":"")+"</span></div></div>";}
+  if(motTotal>0&&swTotal===0)mh+="<div class='mc'><div class='n'>"+motTotal+"</div><div class='l'>Motor Actuators</div></div>";
+  if(acGws>0)mh+="<div class='mc'><div class='n'>"+acGws+"</div><div class='l'>A/C Gateways</div></div>";
+  if(convMods>0)mh+="<div class='mc'><div class='n'>"+convMods+"</div><div class='l'>Binary Input Modules<br><span style='color:var(--t);font-size:10px'>"+tConv+" switches</span></div></div>";
+  if(dimTotal>0)mh+="<div class='mc'><div class='n'>"+dimTotal+"</div><div class='l'>Dimmer Modules</div></div>";
+  if(daliGws>0)mh+="<div class='mc'><div class='n'>"+daliGws+"</div><div class='l'>DALI-2 Gateways<br><span style='color:var(--t);font-size:10px'>"+tDali+" ch</span></div></div>";
+  if(tKp+tThermo>0)mh+="<div class='mc'><div class='n'>"+(tKp+tThermo)+"</div><div class='l'>Keypads & Thermostats</div></div>";
+  if(tTp4+tTp8+tTp10>0)mh+="<div class='mc'><div class='n'>"+(tTp4+tTp8+tTp10)+"</div><div class='l'>Touch Panels</div></div>";
+  if(icOut+icOutKp+icIn+icRead>0)mh+="<div class='mc'><div class='n'>"+(icOut+icOutKp+icIn+icRead)+"</div><div class='l'>Intercom Units</div></div>";
+  mh+="<div class='mc'><div class='n'>"+psCount+"</div><div class='l'>KNX Power Supply"+(needLC?"<br><span style='color:var(--t);font-size:10px'>+ Line Coupler</span>":"")+"</div></div>";
+  mh+="<div class='mc'><div class='n'>"+floors.length+"</div><div class='l'>Floors<br><span style='color:var(--t);font-size:10px'>"+allDev+" devices</span></div></div>";
+  mh+="</div>";
+  document.getElementById("mcards").innerHTML=mh;
+
+  document.getElementById("priceCard").innerHTML=
+    "<div class='price-box'><div><div class='pl'>Indicative Budget Range</div>"+
+    "<div style='font-size:11px;color:var(--mu);margin-top:3px'>Hardware + labour & programming. Ex. VAT.</div></div>"+
+    "<div class='pa'>&#8364;"+lo.toLocaleString()+" &ndash; &#8364;"+hi.toLocaleString()+"<span>ex. VAT</span></div></div>";
+
+  var br="";
+  for(var i=0;i<bom.length;i++){
+    if(!bom[i].items.length)continue;
+    br+="<tr class='bs'><td colspan='2'>"+bom[i].cat+"</td></tr>";
+    for(var j=0;j<bom[i].items.length;j++)br+="<tr><td>"+bom[i].items[j].d+"</td><td style='text-align:center;font-weight:600'>"+bom[i].items[j].q+"</td></tr>";
+  }
+  br+="<tr class='bgt'><td>Total Estimate (ex. VAT - indicative)</td><td style='text-align:center;font-weight:800;color:var(--t)'>&#8364;"+Math.round(grand).toLocaleString()+"</td></tr>";
+
+  document.getElementById("bomCard").innerHTML=
+    "<div class='ec'><h3>Bill of Materials</h3><div style='overflow-x:auto'>"+
+    "<table class='bom-t'><thead><tr><th>Description</th><th style='text-align:center'>Qty</th></tr></thead>"+
+    "<tbody>"+br+"</tbody></table></div>"+
+    "<div class='note' style='margin-top:12px'>Cable supply included (15m per device, standard cable rate). Cable installation, conduit, pipe work, panel enclosures, breakers and VAT not included. Final quotation after design review.</div></div>";
+
+  var sysSel=[];
+  for(var i=0;i<SYS.length;i++){if(selectedSystems.has(SYS[i].id))sysSel.push(SYS[i].l);}
+  document.getElementById("sysCard").innerHTML=sysSel.length?
+    "<div class='ec'><h3>Selected Systems</h3>"+sysSel.map(function(s){return "<div class='er'><span class='k'>"+s+"</span><span class='v' style='color:var(--t);font-size:11px'>INCLUDED</span></div>";}).join("")+"</div>":"";
+  document.getElementById("pkgCard").innerHTML="";
+
+  goTo(4);
+}
+
+function submitForm(){
+  var btn=document.getElementById("subBtn");
+  btn.textContent="Opening email...";
+  btn.disabled=true;
+
+  var fn=document.getElementById("fname").value||"";
+  var ln=document.getElementById("lname").value||"";
+  var em=document.getElementById("email").value||"";
+  var ph=document.getElementById("phone").value||"";
+  var cityEl=document.getElementById("projLocation");
+  var city=cityEl.options[cityEl.selectedIndex].text;
+  var prEl=document.querySelector(".price-box .pa");
+  var prRange=prEl?prEl.textContent.trim():"Not calculated";
+
+  var sysList=[];
+  for(var i=0;i<SYS.length;i++){if(selectedSystems.has(SYS[i].id))sysList.push(SYS[i].l);}
+
+  var lines=[
+    "SMARTVIBES KNX QUOTE REQUEST",
+    "============================",
+    "",
+    "CLIENT DETAILS",
+    "Name:    "+fn+" "+ln,
+    "Email:   "+em,
+    "Phone:   "+ph,
+    "City:    "+city,
+    "Project: "+document.getElementById("projType").value,
+    "Stage:   "+document.getElementById("projStage").value,
+    "Area:    "+document.getElementById("areaVal").textContent+" m2",
+    "Floors:  "+floors.length,
+    "",
+    "PROJECT BRIEF",
+    document.getElementById("brief").value||"-",
+    "",
+    "SYSTEMS SELECTED",
+    sysList.length?sysList.join(", "):"None",
+    "",
+    "BUDGET ESTIMATE",
+    prRange,
+    "",
+    "BILL OF MATERIALS"
+  ];
+
+  var rows=document.querySelectorAll(".bom-t tbody tr");
+  for(var i=0;i<rows.length;i++){
+    var cells=rows[i].querySelectorAll("td");
+    if(cells.length>=2)lines.push(cells[0].textContent.trim()+" | Qty: "+cells[1].textContent.trim());
+    else if(cells.length===1)lines.push("--- "+cells[0].textContent.trim()+" ---");
+  }
+
+  lines.push("");
+  lines.push("PREFERRED CONTACT TIME");
+  lines.push(document.getElementById("ctime").value||"No preference");
+  lines.push("");
+  lines.push("FINAL NOTES");
+  lines.push(document.getElementById("fnotes").value||"-");
+  lines.push("");
+  lines.push("NOTE: Please attach floorplans to this email if available.");
+  lines.push("");
+  lines.push("--- SmartVibes KNX Quote Wizard | smartvibes.tech ---");
+
+  var subject="SmartVibes KNX Quote - "+fn+" "+ln+" / "+city;
+  var body=lines.join("\n");
+  var mailto="mailto:hello@smartvibes.tech?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
+  if(em)mailto+="&cc="+encodeURIComponent(em);
+
+  window.location.href=mailto;
+
+  setTimeout(function(){
+    document.getElementById("step4").classList.remove("active");
+    var sis=document.querySelectorAll(".si");
+    for(var i=0;i<sis.length;i++)sis[i].classList.remove("active");
+    document.getElementById("pf").style.width="100%";
+    document.getElementById("refNum").textContent="Ref: SV-"+Date.now().toString(36).toUpperCase().slice(-6);
+    document.getElementById("sw").classList.add("show");
+    window.scrollTo({top:0,behavior:"smooth"});
+  },1500);
+}
+
+// Build systems grid on load
+window.addEventListener("load",function(){
+  // Systems
+  var sg=document.getElementById("sysg");
+  for(var i=0;i<SYS.length;i++){
+    (function(s){
+      var el=document.createElement("div");
+      el.className="sysc";
+      el.innerHTML=s.i+" "+s.l;
+      el.onclick=function(){
+        if(selectedSystems.has(s.id)){selectedSystems.delete(s.id);el.classList.remove("sel");}
+        else{selectedSystems.add(s.id);el.classList.add("sel");}
+      };
+      sg.appendChild(el);
+    })(SYS[i]);
+  }
+  // Packages
+  var pg=document.getElementById("pkgg");
+  for(var i=0;i<PKG.length;i++){
+    (function(p){
+      var el=document.createElement("div");
+      el.className="pkg-c";
+      var fh="";
+      for(var j=0;j<p.f.length;j++){
+        fh+="<div style='margin-top:6px'><label style='font-size:11px;color:var(--mu);display:block;margin-bottom:3px'>"+p.f[j].l+"</label>";
+        fh+="<input type='number' min='0' max='50' value='"+p.f[j].v+"' id='pkg_"+p.f[j].id+"' onclick='event.stopPropagation()' style='width:80px;padding:5px 8px;text-align:center;font-size:14px;font-weight:600'></div>";
+      }
+      el.innerHTML="<div class='pkg-n'>"+p.n+"</div><div class='pkg-d'>"+p.d+"</div><div class='pkg-q'>"+fh+"</div>";
+      el.onclick=function(e){
+        if(e.target.tagName==="INPUT")return;
+        el.classList.toggle("sel");
+        if(el.classList.contains("sel"))selectedPkgs.set(p.id,p);
+        else selectedPkgs.delete(p.id);
+      };
+      pg.appendChild(el);
+    })(PKG[i]);
+  }
+  // Init floors with 2 default
+  buildFloors();
+});
+</script>
+</body>
+</html>

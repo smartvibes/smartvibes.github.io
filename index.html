@@ -42,7 +42,7 @@
   "description": "KNX smart home and building automation integrator in Cyprus. Specialists in intelligent lighting, climate control, security, shading and AV integration for residential and commercial projects.",
   "url": "https://smartvibes.tech",
   "telephone": "+35799295243",
-  "email": "cs@smartvibes.tech",
+  "email": "hello@smartvibes.tech",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Panagias Tinou 24",
@@ -924,7 +924,7 @@
   "logo": "https://smartvibes.tech/logo.png",
   "image": "https://smartvibes.tech/og-image.jpg",
   "telephone": "+35799295243",
-  "email": "cs@smartvibes.tech",
+  "email": "hello@smartvibes.tech",
   "foundingDate": "2025",
   "address": {
     "@type": "PostalAddress",
@@ -1007,7 +1007,7 @@
     <li><a href="#why">Why us</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">Get in touch</a>
+  
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -1021,7 +1021,6 @@
   <a href="#about" class="mobile-link">About</a>
   <a href="#why" class="mobile-link">Why us</a>
   <a href="#contact" class="mobile-link">Contact</a>
-  <a href="#contact" class="mobile-menu-cta mobile-link">Get in touch</a>
   <div class="mobile-social">
     <a href="https://www.instagram.com/smartvibes_technologies/" target="_blank"><svg viewBox="0 0 32 32" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
   <rect width="32" height="32" rx="8" fill="#1a1a1a"/>
@@ -1054,7 +1053,7 @@
   </h1>
   <p class="hero-sub">Cyprus' specialist KNX smart home and building automation integrator — designing intelligent systems for residential, hospitality, and commercial projects across the whole of Cyprus.</p>
   <div class="hero-actions">
-    <a href="#contact" class="btn-primary">Start a project</a>
+    <a href="smartvibes-quote-wizard.html" class="btn-primary">Start a project</a>
     <a href="#services" class="btn-ghost">Explore services</a>
   </div>
   <div class="hero-scroll">
@@ -1418,7 +1417,7 @@
     <div class="contact-info reveal reveal-delay-2">
       <div class="contact-detail">
         <div class="contact-detail-label">Email</div>
-        <div class="contact-detail-val"><a href="javascript:void(0)" onclick="this.href='mai'+'lto:cs'+'@smartvibes.tech'" style="color:var(--teal);text-decoration:none;" id="em1">cs&#64;smartvibes&#46;tech</a></div>
+        <div class="contact-detail-val"><a href="javascript:void(0)" onclick="this.href='mai'+'lto:hello'+'@smartvibes.tech'" style="color:var(--teal);text-decoration:none;" id="em1">hello&#64;smartvibes&#46;tech</a></div>
       </div>
       <div class="contact-detail">
         <div class="contact-detail-label">Phone / WhatsApp</div>
@@ -1452,6 +1451,7 @@
     <a href="#about">About</a>
     <a href="#why">Why us</a>
     <a href="#contact">Contact</a>
+    <a href="cookies.html">Cookie Policy</a>
     <!-- Social icons -->
     <a href="https://www.instagram.com/smartvibes_technologies/" target="_blank" class="footer-social-icon" title="Instagram"><svg viewBox="0 0 32 32" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
   <rect width="32" height="32" rx="8" fill="#1a1a1a"/>
@@ -1508,6 +1508,35 @@
     });
   }, { threshold: 0.08 });
   reveals.forEach(el => observer.observe(el));
+</script>
+
+
+<!-- COOKIE BANNER -->
+<div id="sv-cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#1a1a1a;border-top:1px solid rgba(115,221,228,0.25);z-index:9999;padding:16px 32px;display:none;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+  <p style="font-size:13px;color:rgba(255,255,255,0.55);font-weight:300;line-height:1.5;flex:1;min-width:220px;margin:0">
+    We use cookies to ensure our site works correctly and to understand how visitors use it.
+    <a href="cookies.html" style="color:#73DDE4;text-decoration:none;margin-left:4px">Cookie Policy →</a>
+  </p>
+  <div style="display:flex;gap:10px;flex-shrink:0">
+    <button onclick="svAcceptCookies()" style="background:#73DDE4;color:#000;border:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;padding:9px 20px;border-radius:6px;cursor:pointer">Accept All</button>
+    <button onclick="svDeclineCookies()" style="background:none;color:rgba(255,255,255,0.45);border:1px solid #333;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;padding:9px 20px;border-radius:6px;cursor:pointer">Necessary Only</button>
+  </div>
+</div>
+<script>
+(function(){
+  if(!localStorage.getItem('sv_cookies')){
+    var b=document.getElementById('sv-cookie-banner');
+    b.style.display='flex';
+  }
+})();
+function svAcceptCookies(){
+  localStorage.setItem('sv_cookies',JSON.stringify({analytics:true,media:true,saved:true}));
+  document.getElementById('sv-cookie-banner').style.display='none';
+}
+function svDeclineCookies(){
+  localStorage.setItem('sv_cookies',JSON.stringify({analytics:false,media:false,saved:true}));
+  document.getElementById('sv-cookie-banner').style.display='none';
+}
 </script>
 </body>
 </html>
